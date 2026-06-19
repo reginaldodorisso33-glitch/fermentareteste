@@ -106,26 +106,19 @@
 
   /* ── LOGO ────────────────────────────────────────────────── */
   .logo{display:flex;align-items:center;gap:.6rem}
-  .logo__mark{width:48px;height:48px;flex:none;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.18))}
-  .logo__txt{display:flex;flex-direction:column;line-height:1}
-  .logo__name{font-family:var(--font-d);font-weight:600;font-size:1.15rem;letter-spacing:.07em;text-transform:uppercase;color:var(--olive)}
-  .logo__sub{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);margin-top:3px}
-  /* logo branco no hero (sobre fundo escuro) */
-  .nav:not(.is-scrolled) .logo__mark{filter:brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+  .logo__mark{width:48px;height:48px;flex:none;object-fit:contain}
 
   /* ── NAV ─────────────────────────────────────────────────── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
     justify-content:space-between;gap:1rem;padding:.7rem clamp(20px,5vw,80px);
-    transition:background .5s,box-shadow .5s,padding .4s}
-  .nav.is-scrolled{background:rgba(245,241,232,.95);backdrop-filter:blur(12px);
-    box-shadow:0 1px 0 var(--line),0 4px 24px -8px rgba(17,17,17,.08)}
-  .nav .logo__name{color:var(--cream);transition:color .4s}
-  .nav .logo__sub{color:rgba(245,241,232,.65);transition:color .4s}
-  .nav.is-scrolled .logo__name{color:var(--olive)}
-  .nav.is-scrolled .logo__sub{color:var(--wine)}
+    background:rgba(245,241,232,.96);backdrop-filter:blur(14px);
+    box-shadow:0 1px 0 var(--line),0 4px 24px -8px rgba(17,17,17,.07)}
+  .nav::after{content:"";position:absolute;top:100%;left:0;right:0;height:52px;pointer-events:none;
+    background:linear-gradient(to bottom,rgba(245,241,232,.5) 0%,transparent 100%);z-index:-1}
+  .nav .logo__name{color:var(--olive)}
+  .nav .logo__sub{color:var(--wine)}
   .nav__links{display:none;gap:2rem;font-size:.88rem}
-  .nav__links a{color:rgba(245,241,232,.88);transition:color .3s,opacity .3s;position:relative;letter-spacing:.01em}
-  .nav.is-scrolled .nav__links a{color:var(--ink)}
+  .nav__links a{color:var(--ink);transition:color .3s;position:relative;letter-spacing:.01em}
   .nav__links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--wine);transition:width .3s var(--ease)}
   .nav__links a:hover::after{width:100%}
   .nav .btn--small{display:none}
@@ -150,7 +143,7 @@
   /* ══════════════════════════════════════════════════════════
      1. HERO
   ══════════════════════════════════════════════════════════ */
-  .hero{align-items:flex-end;overflow:hidden;padding-top:clamp(100px,12vw,160px);padding-bottom:clamp(60px,8vw,120px)}
+  .hero{align-items:center;overflow:hidden;padding-top:clamp(72px,10vw,100px);padding-bottom:clamp(48px,6vw,80px)}
 
   /* multicamada: foto + oliva → calor → fogo → profundidade */
   .hero__bg{position:absolute;inset:0;z-index:0;
@@ -495,10 +488,55 @@
     [data-reveal],[data-reveal-scale]{opacity:1!important;transform:none!important;transition:none}
     .hero__cue span{animation:none}.btn,.flavor,.prep-step{transition:none}
   }
+  /* ── INTRO SPLASH ────────────────────────────────────────── */
+  .intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:1.6rem;
+    background:linear-gradient(145deg,#1e3020 0%,#2E4A32 50%,#1a2e1c 100%);
+    pointer-events:all;transition:opacity .6s var(--ease),visibility .6s}
+  .intro.is-out{opacity:0;visibility:hidden;pointer-events:none}
+  .intro__logo{width:clamp(110px,22vw,180px);opacity:0;transform:scale(.7);
+    transition:opacity .7s var(--ease),transform .7s var(--ease);filter:brightness(0) invert(1)}
+  .intro__logo.is-visible{opacity:1;transform:scale(1)}
+  .intro__text{opacity:0;transform:translateY(14px);
+    transition:opacity .6s var(--ease) .35s,transform .6s var(--ease) .35s;
+    text-align:center}
+  .intro__text.is-visible{opacity:1;transform:none}
+  .intro__welcome{font-family:var(--font-b);font-size:.72rem;letter-spacing:.32em;
+    text-transform:uppercase;color:rgba(245,241,232,.55);margin-bottom:.4rem}
+  .intro__name{font-family:var(--font-d);font-size:clamp(1.6rem,5vw,2.6rem);
+    color:var(--cream);font-weight:400;font-style:italic;letter-spacing:.02em}
+  .intro__name em{color:var(--gold-2);font-style:normal}
+  .intro__bar{width:0;height:2px;background:linear-gradient(90deg,var(--wine),var(--gold));
+    border-radius:2px;margin:.9rem auto 0;transition:width 1s var(--ease) .5s}
+  .intro__bar.is-visible{width:clamp(60px,12vw,100px)}
+
+  /* logo flutuante que voa pro nav */
+  .intro__fly{position:fixed;z-index:10000;pointer-events:none;
+    width:clamp(110px,22vw,180px);
+    top:50%;left:50%;
+    transform:translate(-50%,-50%) scale(1);
+    transition:top .7s var(--ease),left .7s var(--ease),width .7s var(--ease),transform .7s var(--ease),opacity .4s;
+    filter:brightness(0) invert(1);
+    opacity:0}
+  .intro__fly.is-flying{opacity:1}
+  .intro__fly.is-landed{top:1rem;left:clamp(20px,5vw,80px);width:48px;transform:translate(0,0) scale(1);filter:brightness(0) invert(1)}
+  .intro__fly.is-done{opacity:0}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#hero">Pular para o conteúdo</a>
+
+  <!-- INTRO SPLASH -->
+  <div class="intro" id="intro" aria-live="polite" role="status">
+    <img class="intro__logo" id="introLogo" src="assets/img/logo.webp" alt="Fermentare Pizzas"/>
+    <div class="intro__text" id="introText">
+      <p class="intro__welcome">Bem-vinda à</p>
+      <p class="intro__name"><em>Fermentare</em> Pizzas</p>
+      <div class="intro__bar" id="introBar"></div>
+    </div>
+  </div>
+  <!-- logo que anima voando pro nav -->
+  <img class="intro__fly" id="introFly" src="assets/img/logo.webp" alt="" aria-hidden="true"/>
 
   <!-- SVG do logo (reutilizável) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1168,41 +1206,96 @@
   </footer>
 
   <script>
+  // Ano footer
   (function(){
-    "use strict";
-
-    // Ano footer
     var a=document.getElementById("ano");
     if(a)a.textContent=new Date().getFullYear();
+  })();
 
-    // Nav scroll state
+  // Nav sombra ao rolar
+  (function(){
     var nav=document.querySelector(".nav");
-    if(nav){
-      function onS(){nav.classList.toggle("is-scrolled",window.scrollY>40)}
-      onS();
-      window.addEventListener("scroll",onS,{passive:true});
-    }
+    if(!nav)return;
+    function onS(){nav.style.boxShadow=window.scrollY>10?"0 2px 16px -4px rgba(17,17,17,.13)":"0 1px 0 rgba(17,17,17,.1)";}
+    onS();
+    window.addEventListener("scroll",onS,{passive:true});
+  })();
 
-    // Reveal
+  // Reveal on scroll
+  (function(){
     var els=document.querySelectorAll("[data-reveal],[data-reveal-scale]");
     var rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
     if(rm||!("IntersectionObserver" in window)){
-      els.forEach(function(el){el.classList.add("is-visible")});
-    }else{
-      var io=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(!e.isIntersecting)return;
-          var sibs=e.target.parentElement
-            ?e.target.parentElement.querySelectorAll(":scope>[data-reveal],:scope>[data-reveal-scale]")
-            :[e.target];
-          var i=Array.prototype.indexOf.call(sibs,e.target);
-          e.target.style.transitionDelay=Math.min(i,7)*75+"ms";
-          e.target.classList.add("is-visible");
-          io.unobserve(e.target);
-        });
-      },{threshold:.1,rootMargin:"0px 0px -6% 0px"});
-      els.forEach(function(el){io.observe(el)});
+      els.forEach(function(el){el.classList.add("is-visible");});
+      return;
     }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var sibs=e.target.parentElement
+          ?e.target.parentElement.querySelectorAll(":scope>[data-reveal],:scope>[data-reveal-scale]")
+          :[e.target];
+        var i=Array.prototype.indexOf.call(sibs,e.target);
+        e.target.style.transitionDelay=Math.min(i,7)*75+"ms";
+        e.target.classList.add("is-visible");
+        io.unobserve(e.target);
+      });
+    },{threshold:.1,rootMargin:"0px 0px -6% 0px"});
+    els.forEach(function(el){io.observe(el);});
+  })();
+
+  // Intro splash
+  (function(){
+    var intro   = document.getElementById("intro");
+    var iLogo   = document.getElementById("introLogo");
+    var iText   = document.getElementById("introText");
+    var iBar    = document.getElementById("introBar");
+    var iFly    = document.getElementById("introFly");
+    var navLogo = document.querySelector(".nav .logo__mark");
+    if(!intro)return;
+
+    // Função de fechamento — sempre executa independente do logo carregar
+    function closeIntro(){
+      intro.classList.add("is-out");
+      if(navLogo){ navLogo.style.opacity="1"; }
+      if(iFly){ iFly.classList.add("is-done"); }
+    }
+
+    // Safety: fecha em no máximo 4s mesmo se algo falhar
+    var safetyTimer = setTimeout(closeIntro, 4000);
+
+    if(!iLogo||!iFly||!navLogo){
+      clearTimeout(safetyTimer);
+      setTimeout(closeIntro, 400);
+      return;
+    }
+
+    navLogo.style.opacity="0";
+    navLogo.style.transition="opacity .3s";
+
+    setTimeout(function(){ iLogo.classList.add("is-visible"); },120);
+    setTimeout(function(){ iText.classList.add("is-visible"); iBar.classList.add("is-visible"); },280);
+
+    setTimeout(function(){
+      clearTimeout(safetyTimer);
+      iLogo.style.transition="opacity .35s";
+      iText.style.transition="opacity .35s";
+      iLogo.style.opacity="0";
+      iText.style.opacity="0";
+      iFly.classList.add("is-flying");
+
+      setTimeout(function(){
+        var rect=navLogo.getBoundingClientRect();
+        iFly.style.top=(rect.top+rect.height/2)+"px";
+        iFly.style.left=rect.left+"px";
+        iFly.style.width=rect.width+"px";
+        iFly.style.transform="translate(0,-50%)";
+
+        setTimeout(function(){
+          closeIntro();
+        },350);
+      },80);
+    },2400);
   })();
   </script>
 </body>
