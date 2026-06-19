@@ -106,10 +106,12 @@
 
   /* ── LOGO ────────────────────────────────────────────────── */
   .logo{display:flex;align-items:center;gap:.6rem}
-  .logo__mark{width:42px;height:42px;flex:none}
+  .logo__mark{width:48px;height:48px;flex:none;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.18))}
   .logo__txt{display:flex;flex-direction:column;line-height:1}
   .logo__name{font-family:var(--font-d);font-weight:600;font-size:1.15rem;letter-spacing:.07em;text-transform:uppercase;color:var(--olive)}
   .logo__sub{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);margin-top:3px}
+  /* logo branco no hero (sobre fundo escuro) */
+  .nav:not(.is-scrolled) .logo__mark{filter:brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3))}
 
   /* ── NAV ─────────────────────────────────────────────────── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
@@ -148,15 +150,15 @@
   /* ══════════════════════════════════════════════════════════
      1. HERO
   ══════════════════════════════════════════════════════════ */
-  .hero{align-items:flex-end;overflow:hidden;padding-bottom:clamp(60px,8vw,120px)}
+  .hero{align-items:flex-end;overflow:hidden;padding-top:clamp(100px,12vw,160px);padding-bottom:clamp(60px,8vw,120px)}
 
   /* multicamada: foto + oliva → calor → fogo → profundidade */
   .hero__bg{position:absolute;inset:0;z-index:0;
     background:
-      radial-gradient(ellipse 70% 55% at 78% 25%, rgba(201,130,40,.32) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 70% at 15% 80%, rgba(37,57,31,.75) 0%, transparent 55%),
-      radial-gradient(ellipse 90% 60% at 50% 110%, rgba(158,43,43,.2) 0%, transparent 55%),
-      linear-gradient(148deg, rgba(46,74,50,.55) 0%, rgba(61,92,54,.4) 30%, rgba(42,64,48,.55) 60%, rgba(30,48,32,.75) 100%),
+      radial-gradient(ellipse 70% 55% at 78% 25%, rgba(201,130,40,.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 15% 80%, rgba(37,57,31,.35) 0%, transparent 55%),
+      radial-gradient(ellipse 90% 60% at 50% 110%, rgba(158,43,43,.12) 0%, transparent 55%),
+      linear-gradient(148deg, rgba(46,74,50,.22) 0%, rgba(61,92,54,.15) 30%, rgba(42,64,48,.22) 60%, rgba(30,48,32,.38) 100%),
       url("assets/img/hero.webp");
     background-size:cover;background-position:center 35%}
   /* blob de calor — glow forno */
@@ -168,9 +170,9 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='turbulence' baseFrequency='.45' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E")}
   .hero__overlay{position:absolute;inset:0;z-index:1;
     background:linear-gradient(to top,
-      rgba(30,48,32,.88) 0%,
-      rgba(30,48,32,.35) 35%,
-      rgba(46,64,48,.15) 65%,
+      rgba(30,48,32,.82) 0%,
+      rgba(30,48,32,.18) 30%,
+      rgba(46,64,48,.05) 55%,
       transparent 100%)}
   .hero__inner{position:relative;z-index:2;color:var(--cream);max-width:820px}
   .hero__title{font-size:clamp(2.8rem,9vw,5.6rem);letter-spacing:-.02em;margin-bottom:1.1rem;font-weight:500}
@@ -519,7 +521,7 @@
   <!-- NAV -->
   <header class="nav">
     <a class="logo" href="#hero" aria-label="Fermentare Pizzas">
-      <svg class="logo__mark"><use href="#logo-mark"/></svg>
+      <img class="logo__mark" src="assets/img/logo.webp" alt="Fermentare Pizzas logo" width="48" height="48"/>
       <span class="logo__txt">
         <span class="logo__name">Fermentare</span>
         <span class="logo__sub">Pizzas</span>
@@ -1141,7 +1143,7 @@
     <div class="footer__inner">
       <div class="footer__brand">
         <a class="logo" href="#hero">
-          <svg class="logo__mark"><use href="#logo-mark"/></svg>
+          <img class="logo__mark" src="assets/img/logo.webp" alt="Fermentare Pizzas logo" width="48" height="48"/>
           <span class="logo__txt">
             <span class="logo__name">Fermentare</span>
             <span class="logo__sub">Pizzas</span>
