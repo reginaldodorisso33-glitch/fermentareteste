@@ -112,9 +112,9 @@
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
     justify-content:space-between;gap:1rem;padding:.7rem clamp(20px,5vw,80px);
     background:rgba(245,241,232,.96);backdrop-filter:blur(14px);
-    box-shadow:0 1px 0 var(--line),0 4px 24px -8px rgba(17,17,17,.07)}
-  .nav::after{content:"";position:absolute;top:100%;left:0;right:0;height:52px;pointer-events:none;
-    background:linear-gradient(to bottom,rgba(245,241,232,.5) 0%,transparent 100%);z-index:-1}
+    box-shadow:0 1px 0 var(--line),0 4px 24px -8px rgba(17,17,17,.07);
+    transform:translateY(0);transition:transform .35s var(--ease),box-shadow .3s}
+  .nav.is-hidden{transform:translateY(-110%)}
   .nav .logo__name{color:var(--olive)}
   .nav .logo__sub{color:var(--wine)}
   .nav__links{display:none;gap:2rem;font-size:.88rem}
@@ -123,6 +123,48 @@
   .nav__links a:hover::after{width:100%}
   .nav .btn--small{display:none}
   @media(min-width:900px){.nav__links{display:flex}.nav .btn--small{display:inline-flex}}
+
+  /* ── HAMBURGUER ──────────────────────────────────────────── */
+  .nav__burger{display:flex;flex-direction:column;justify-content:center;gap:5px;
+    width:40px;height:40px;background:none;border:none;cursor:pointer;padding:6px;
+    border-radius:8px;transition:background .2s;flex:none}
+  .nav__burger:hover{background:rgba(46,74,50,.08)}
+  .nav__burger span{display:block;height:2px;background:var(--olive);border-radius:2px;
+    transition:transform .3s var(--ease),opacity .2s,width .3s}
+  .nav__burger span:nth-child(1){width:22px}
+  .nav__burger span:nth-child(2){width:16px}
+  .nav__burger span:nth-child(3){width:22px}
+  .nav__burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);width:22px}
+  .nav__burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .nav__burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);width:22px}
+  @media(min-width:900px){.nav__burger{display:none}}
+
+  /* ── MENU MOBILE ─────────────────────────────────────────── */
+  .nav__mobile{position:fixed;top:0;left:0;right:0;bottom:0;z-index:49;
+    background:rgba(245,241,232,.98);backdrop-filter:blur(18px);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+    opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;
+    padding:clamp(20px,5vw,60px)}
+  .nav__mobile.is-open{opacity:1;visibility:visible}
+  .nav__mobile a{font-family:var(--font-d);font-size:clamp(1.6rem,6vw,2.4rem);
+    color:var(--olive);font-weight:500;letter-spacing:.01em;
+    padding:.6rem 0;border-bottom:1px solid rgba(46,74,50,.1);width:100%;text-align:center;
+    transition:color .2s,padding .2s}
+  .nav__mobile a:last-of-type{border-bottom:none}
+  .nav__mobile a:hover{color:var(--wine);padding-left:.5rem}
+  .nav__mobile .btn{margin-top:2rem;width:100%;justify-content:center}
+
+  /* ── BOTÃO VOLTAR AO TOPO ────────────────────────────────── */
+  .back-top{position:fixed;bottom:1.4rem;right:1.4rem;z-index:48;
+    width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+    background:var(--olive);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 24px -8px rgba(46,74,50,.55);
+    opacity:0;visibility:hidden;transform:translateY(12px);
+    transition:opacity .35s,visibility .35s,transform .35s var(--ease),background .2s}
+  .back-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+  .back-top:hover{background:var(--leaf-2);transform:translateY(-3px)}
+  .back-top svg{width:18px;height:18px}
 
   /* ── SELOS (marquee) ─────────────────────────────────────── */
   .trust-bar{position:relative;overflow:hidden;padding:.78rem 0;
@@ -495,19 +537,16 @@
     pointer-events:all;transition:opacity .6s var(--ease),visibility .6s}
   .intro.is-out{opacity:0;visibility:hidden;pointer-events:none}
   .intro__logo{width:clamp(110px,22vw,180px);opacity:0;transform:scale(.7);
-    transition:opacity .7s var(--ease),transform .7s var(--ease);filter:brightness(0) invert(1)}
+    transition:opacity .7s var(--ease),transform .7s var(--ease)}
   .intro__logo.is-visible{opacity:1;transform:scale(1)}
-  .intro__text{opacity:0;transform:translateY(14px);
+  .intro__text{opacity:0;transform:translateY(10px);
     transition:opacity .6s var(--ease) .35s,transform .6s var(--ease) .35s;
-    text-align:center}
+    text-align:center;margin-top:.6rem}
   .intro__text.is-visible{opacity:1;transform:none}
-  .intro__welcome{font-family:var(--font-b);font-size:.72rem;letter-spacing:.32em;
-    text-transform:uppercase;color:rgba(245,241,232,.55);margin-bottom:.4rem}
-  .intro__name{font-family:var(--font-d);font-size:clamp(1.6rem,5vw,2.6rem);
-    color:var(--cream);font-weight:400;font-style:italic;letter-spacing:.02em}
-  .intro__name em{color:var(--gold-2);font-style:normal}
+  .intro__welcome{font-family:var(--font-d);font-size:clamp(1.4rem,5vw,2.2rem);
+    color:var(--cream);font-weight:400;letter-spacing:.04em}
   .intro__bar{width:0;height:2px;background:linear-gradient(90deg,var(--wine),var(--gold));
-    border-radius:2px;margin:.9rem auto 0;transition:width 1s var(--ease) .5s}
+    border-radius:2px;margin:.7rem auto 0;transition:width 1s var(--ease) .5s}
   .intro__bar.is-visible{width:clamp(60px,12vw,100px)}
 
   /* logo flutuante que voa pro nav */
@@ -516,10 +555,9 @@
     top:50%;left:50%;
     transform:translate(-50%,-50%) scale(1);
     transition:top .7s var(--ease),left .7s var(--ease),width .7s var(--ease),transform .7s var(--ease),opacity .4s;
-    filter:brightness(0) invert(1);
     opacity:0}
   .intro__fly.is-flying{opacity:1}
-  .intro__fly.is-landed{top:1rem;left:clamp(20px,5vw,80px);width:48px;transform:translate(0,0) scale(1);filter:brightness(0) invert(1)}
+  .intro__fly.is-landed{top:1rem;left:clamp(20px,5vw,80px);width:48px;transform:translate(0,0) scale(1)}
   .intro__fly.is-done{opacity:0}
   </style>
 </head>
@@ -530,8 +568,7 @@
   <div class="intro" id="intro" aria-live="polite" role="status">
     <img class="intro__logo" id="introLogo" src="assets/img/logo.webp" alt="Fermentare Pizzas"/>
     <div class="intro__text" id="introText">
-      <p class="intro__welcome">Bem-vinda à</p>
-      <p class="intro__name"><em>Fermentare</em> Pizzas</p>
+      <p class="intro__welcome">Bem-vindo</p>
       <div class="intro__bar" id="introBar"></div>
     </div>
   </div>
@@ -557,7 +594,7 @@
   </svg>
 
   <!-- NAV -->
-  <header class="nav">
+  <header class="nav" id="nav">
     <a class="logo" href="#hero" aria-label="Fermentare Pizzas">
       <img class="logo__mark" src="assets/img/logo.webp" alt="Fermentare Pizzas logo" width="48" height="48"/>
       <span class="logo__txt">
@@ -574,7 +611,26 @@
       <a href="#revenda">Revenda</a>
     </nav>
     <a class="btn btn--small btn--solid" href="#cta">Fazer pedido</a>
+    <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <!-- MENU MOBILE -->
+  <div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
+    <a href="#manifesto">Manifesto</a>
+    <a href="#institucional">Institucional</a>
+    <a href="#processo">Processo</a>
+    <a href="#sabores">Sabores</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#revenda">Revenda</a>
+    <a class="btn btn--solid" href="#cta">Fazer pedido</a>
+  </div>
+
+  <!-- BOTÃO VOLTAR AO TOPO -->
+  <button class="back-top" id="backTop" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
 
   <main>
     <!-- ═══ 1. HERO ═══════════════════════════════════════════ -->
@@ -1212,13 +1268,58 @@
     if(a)a.textContent=new Date().getFullYear();
   })();
 
-  // Nav sombra ao rolar
+  // Nav esconde ao rolar para baixo, aparece ao rolar para cima
   (function(){
-    var nav=document.querySelector(".nav");
+    var nav=document.getElementById("nav");
     if(!nav)return;
-    function onS(){nav.style.boxShadow=window.scrollY>10?"0 2px 16px -4px rgba(17,17,17,.13)":"0 1px 0 rgba(17,17,17,.1)";}
-    onS();
-    window.addEventListener("scroll",onS,{passive:true});
+    var lastY=0,ticking=false;
+    function update(){
+      var y=window.scrollY;
+      if(y>80){
+        nav.classList.toggle("is-hidden", y>lastY);
+      } else {
+        nav.classList.remove("is-hidden");
+      }
+      lastY=y;
+      ticking=false;
+    }
+    window.addEventListener("scroll",function(){
+      if(!ticking){requestAnimationFrame(update);ticking=true;}
+    },{passive:true});
+  })();
+
+  // Hamburguer menu mobile
+  (function(){
+    var burger=document.getElementById("burger");
+    var menu=document.getElementById("mobileMenu");
+    if(!burger||!menu)return;
+    function toggle(){
+      var open=burger.classList.toggle("is-open");
+      menu.classList.toggle("is-open",open);
+      burger.setAttribute("aria-expanded",open);
+      document.body.style.overflow=open?"hidden":"";
+    }
+    burger.addEventListener("click",toggle);
+    menu.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click",function(){
+        burger.classList.remove("is-open");
+        menu.classList.remove("is-open");
+        burger.setAttribute("aria-expanded","false");
+        document.body.style.overflow="";
+      });
+    });
+  })();
+
+  // Botão voltar ao topo
+  (function(){
+    var btn=document.getElementById("backTop");
+    if(!btn)return;
+    window.addEventListener("scroll",function(){
+      btn.classList.toggle("is-visible",window.scrollY>400);
+    },{passive:true});
+    btn.addEventListener("click",function(){
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
   })();
 
   // Reveal on scroll
