@@ -185,7 +185,8 @@
   /* ══════════════════════════════════════════════════════════
      1. HERO
   ══════════════════════════════════════════════════════════ */
-  .hero{align-items:center;overflow:hidden;padding-top:clamp(72px,10vw,100px);padding-bottom:clamp(48px,6vw,80px)}
+  .hero{align-items:center;justify-content:center;overflow:hidden;
+    padding-top:clamp(72px,10vw,100px);padding-bottom:clamp(48px,6vw,80px)}
 
   /* multicamada: foto + oliva → calor → fogo → profundidade */
   .hero__bg{position:absolute;inset:0;z-index:0;
@@ -196,33 +197,36 @@
       linear-gradient(148deg, rgba(46,74,50,.22) 0%, rgba(61,92,54,.15) 30%, rgba(42,64,48,.22) 60%, rgba(30,48,32,.38) 100%),
       url("assets/img/hero.webp");
     background-size:cover;background-position:center 35%}
-  /* blob de calor — glow forno */
   .hero__bg::before{content:"";position:absolute;inset:0;
     background:radial-gradient(ellipse 55% 45% at 72% 18%, rgba(220,150,50,.28), transparent 65%);
     mix-blend-mode:screen}
-  /* textura orgânica sutil */
   .hero__bg::after{content:"";position:absolute;inset:0;opacity:.06;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='turbulence' baseFrequency='.45' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E")}
   .hero__overlay{position:absolute;inset:0;z-index:1;
     background:linear-gradient(to top,
-      rgba(30,48,32,.82) 0%,
-      rgba(30,48,32,.18) 30%,
-      rgba(46,64,48,.05) 55%,
-      transparent 100%)}
-  .hero__inner{position:relative;z-index:2;color:var(--cream);max-width:820px}
-  .hero__title{font-size:clamp(2.8rem,9vw,5.6rem);letter-spacing:-.02em;margin-bottom:1.1rem;font-weight:500}
+      rgba(30,48,32,.85) 0%,
+      rgba(30,48,32,.45) 40%,
+      rgba(30,48,32,.25) 70%,
+      rgba(30,48,32,.15) 100%)}
+  .hero__inner{position:relative;z-index:2;color:var(--cream);
+    text-align:center;display:flex;flex-direction:column;align-items:center;max-width:640px}
+  .hero__title{font-size:clamp(2.4rem,8vw,4.8rem);letter-spacing:-.02em;margin-bottom:.5rem;font-weight:500;line-height:1.02}
   .hero__title em{font-style:italic;color:var(--gold-2);font-weight:300;display:block}
-  .hero__sub{font-size:clamp(1rem,2.2vw,1.28rem);color:rgba(245,241,232,.84);max-width:36ch;
-    margin-bottom:2rem;font-weight:300;line-height:1.65}
-  .hero__actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-bottom:2.4rem}
-  .hero__event-link{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.8rem;
-    font-size:.85rem;font-weight:500;letter-spacing:.02em;color:rgba(245,241,232,.72);
+  /* divisor losangos */
+  .hero__rule{display:flex;align-items:center;gap:.55rem;justify-content:center;margin:.7rem 0 1.1rem}
+  .hero__rule span{height:1.5px;width:clamp(28px,5vw,48px);background:var(--wine)}
+  .hero__rule i{width:7px;height:7px;background:var(--wine);transform:rotate(45deg);display:block}
+  .hero__sub{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,241,232,.78);max-width:32ch;
+    margin-bottom:1.6rem;font-weight:300;line-height:1.65;text-align:center}
+  .hero__actions{display:flex;flex-direction:column;gap:.65rem;width:100%;max-width:320px;margin-bottom:1.8rem}
+  .hero__actions .btn{width:100%;justify-content:center}
+  .hero__event-link{display:inline-flex;align-items:center;gap:.5rem;
+    font-size:.82rem;font-weight:500;letter-spacing:.02em;color:rgba(245,241,232,.6);
     transition:color .3s,gap .3s}
-  .hero__event-link svg{width:15px;height:15px;color:var(--gold-2);flex:none}
-  .hero__event-link span{border-bottom:1px solid rgba(245,241,232,.3);padding-bottom:1px;transition:border-color .3s}
+  .hero__event-link svg{width:14px;height:14px;color:var(--gold-2);flex:none}
+  .hero__event-link span{border-bottom:1px solid rgba(245,241,232,.25);padding-bottom:1px;transition:border-color .3s}
   .hero__event-link:hover{color:var(--cream);gap:.7rem}
   .hero__event-link:hover span{border-color:var(--gold-2)}
-  /* scroll cue */
   .hero__cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;
     width:24px;height:38px;border:1px solid rgba(245,241,232,.4);border-radius:14px}
   .hero__cue span{position:absolute;top:8px;left:50%;width:3px;height:7px;border-radius:2px;
@@ -532,22 +536,23 @@
   }
   /* ── INTRO SPLASH ────────────────────────────────────────── */
   .intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:1.6rem;
-    background:linear-gradient(145deg,#1e3020 0%,#2E4A32 50%,#1a2e1c 100%);
+    align-items:center;justify-content:center;gap:1.2rem;
+    background:var(--cream);
     pointer-events:all;transition:opacity .6s var(--ease),visibility .6s}
   .intro.is-out{opacity:0;visibility:hidden;pointer-events:none}
-  .intro__logo{width:clamp(110px,22vw,180px);opacity:0;transform:scale(.7);
-    transition:opacity .7s var(--ease),transform .7s var(--ease)}
-  .intro__logo.is-visible{opacity:1;transform:scale(1)}
   .intro__text{opacity:0;transform:translateY(10px);
-    transition:opacity .6s var(--ease) .35s,transform .6s var(--ease) .35s;
-    text-align:center;margin-top:.6rem}
+    transition:opacity .7s var(--ease),transform .7s var(--ease);
+    text-align:center;display:flex;flex-direction:column;align-items:center;gap:.9rem}
   .intro__text.is-visible{opacity:1;transform:none}
-  .intro__welcome{font-family:var(--font-d);font-size:clamp(1.4rem,5vw,2.2rem);
-    color:var(--cream);font-weight:400;letter-spacing:.04em}
-  .intro__bar{width:0;height:2px;background:linear-gradient(90deg,var(--wine),var(--gold));
-    border-radius:2px;margin:.7rem auto 0;transition:width 1s var(--ease) .5s}
-  .intro__bar.is-visible{width:clamp(60px,12vw,100px)}
+  .intro__welcome{font-family:var(--font-b);font-size:clamp(.75rem,2.5vw,.88rem);
+    letter-spacing:.28em;text-transform:uppercase;color:var(--leaf);
+    display:flex;align-items:center;gap:.9rem}
+  .intro__welcome::before,.intro__welcome::after{content:"";height:1px;width:clamp(28px,6vw,48px);
+    background:var(--leaf);opacity:.5}
+  .intro__rule{display:flex;align-items:center;gap:.5rem}
+  .intro__rule span{height:1.5px;width:clamp(40px,8vw,70px);background:var(--wine)}
+  .intro__rule i{width:9px;height:9px;background:var(--wine);transform:rotate(45deg);display:block}
+  .intro__bar{width:0;height:0;margin:0}/* desativado */
 
   /* logo flutuante que voa pro nav */
   .intro__fly{position:fixed;z-index:10000;pointer-events:none;
@@ -566,14 +571,15 @@
 
   <!-- INTRO SPLASH -->
   <div class="intro" id="intro" aria-live="polite" role="status">
-    <img class="intro__logo" id="introLogo" src="assets/img/logo.webp" alt="Fermentare Pizzas"/>
     <div class="intro__text" id="introText">
       <p class="intro__welcome">Bem-vindo</p>
-      <div class="intro__bar" id="introBar"></div>
+      <div class="intro__rule">
+        <span></span>
+        <i></i><i></i><i></i>
+        <span></span>
+      </div>
     </div>
   </div>
-  <!-- logo que anima voando pro nav -->
-  <img class="intro__fly" id="introFly" src="assets/img/logo.webp" alt="" aria-hidden="true"/>
 
   <!-- SVG do logo (reutilizável) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -643,9 +649,11 @@
           Fermentação natural.
           <em>Sabor de verdade.</em>
         </h1>
+        <div class="hero__rule" data-reveal aria-hidden="true">
+          <span></span><i></i><i></i><i></i><span></span>
+        </div>
         <p class="hero__sub" data-reveal>
-          Pizzas artesanais pré-assadas em forno de alta temperatura,
-          seladas a vácuo e prontas em 7 a 10 minutos no forno ou air fryer.
+          Pré-assadas em forno de alta temperatura, prontas em 7 a 10 minutos no forno ou air fryer.
         </p>
         <div class="hero__actions" data-reveal>
           <a class="btn btn--solid" href="https://wa.me/" rel="noopener">
@@ -1348,55 +1356,23 @@
   // Intro splash
   (function(){
     var intro   = document.getElementById("intro");
-    var iLogo   = document.getElementById("introLogo");
     var iText   = document.getElementById("introText");
-    var iBar    = document.getElementById("introBar");
-    var iFly    = document.getElementById("introFly");
     var navLogo = document.querySelector(".nav .logo__mark");
     if(!intro)return;
 
-    // Função de fechamento — sempre executa independente do logo carregar
     function closeIntro(){
       intro.classList.add("is-out");
-      if(navLogo){ navLogo.style.opacity="1"; }
-      if(iFly){ iFly.classList.add("is-done"); }
+      if(navLogo) navLogo.style.opacity="1";
     }
+    var safetyTimer=setTimeout(closeIntro,4000);
 
-    // Safety: fecha em no máximo 4s mesmo se algo falhar
-    var safetyTimer = setTimeout(closeIntro, 4000);
-
-    if(!iLogo||!iFly||!navLogo){
-      clearTimeout(safetyTimer);
-      setTimeout(closeIntro, 400);
-      return;
-    }
-
-    navLogo.style.opacity="0";
-    navLogo.style.transition="opacity .3s";
-
-    setTimeout(function(){ iLogo.classList.add("is-visible"); },120);
-    setTimeout(function(){ iText.classList.add("is-visible"); iBar.classList.add("is-visible"); },280);
+    setTimeout(function(){ if(iText) iText.classList.add("is-visible"); },150);
 
     setTimeout(function(){
       clearTimeout(safetyTimer);
-      iLogo.style.transition="opacity .35s";
-      iText.style.transition="opacity .35s";
-      iLogo.style.opacity="0";
-      iText.style.opacity="0";
-      iFly.classList.add("is-flying");
-
-      setTimeout(function(){
-        var rect=navLogo.getBoundingClientRect();
-        iFly.style.top=(rect.top+rect.height/2)+"px";
-        iFly.style.left=rect.left+"px";
-        iFly.style.width=rect.width+"px";
-        iFly.style.transform="translate(0,-50%)";
-
-        setTimeout(function(){
-          closeIntro();
-        },350);
-      },80);
-    },2400);
+      if(iText){ iText.style.transition="opacity .5s"; iText.style.opacity="0"; }
+      setTimeout(closeIntro, 500);
+    },2200);
   })();
   </script>
 </body>
