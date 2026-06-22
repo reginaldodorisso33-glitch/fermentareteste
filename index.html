@@ -168,17 +168,17 @@
 
   /* ── SELOS (marquee) ─────────────────────────────────────── */
   .trust-bar{position:relative;overflow:hidden;padding:.78rem 0;
-    background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    background:var(--olive-deep);border-top:1px solid rgba(245,241,232,.08);border-bottom:1px solid rgba(245,241,232,.08)}
   .trust-track{display:flex;width:max-content;animation:trustscroll 24s linear infinite}
   .trust-bar:hover .trust-track{animation-play-state:paused}
   .trust-group{display:flex;align-items:center;gap:clamp(1.3rem,3vw,2.2rem);padding-right:clamp(1.3rem,3vw,2.2rem)}
   .trust-item{display:flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:500;
-    text-transform:uppercase;letter-spacing:.1em;color:rgba(17,17,17,.7);white-space:nowrap}
-  .trust-item svg{width:14px;height:14px;color:var(--wine);flex:none}
-  .trust-sep{font-size:.85rem;color:rgba(17,17,17,.25);flex:none;margin-right:clamp(1.3rem,3vw,2.2rem);font-weight:300}
+    text-transform:uppercase;letter-spacing:.1em;color:rgba(245,241,232,.65);white-space:nowrap}
+  .trust-item svg{width:14px;height:14px;color:var(--gold-2);flex:none}
+  .trust-sep{font-size:.85rem;color:rgba(245,241,232,.2);flex:none;margin-right:clamp(1.3rem,3vw,2.2rem);font-weight:300}
   .trust-bar::before,.trust-bar::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
-  .trust-bar::before{left:0;background:linear-gradient(to right,var(--cream),transparent)}
-  .trust-bar::after{right:0;background:linear-gradient(to left,var(--cream),transparent)}
+  .trust-bar::before{left:0;background:linear-gradient(to right,var(--olive-deep),transparent)}
+  .trust-bar::after{right:0;background:linear-gradient(to left,var(--olive-deep),transparent)}
   @keyframes trustscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.trust-track{animation:none}}
 
@@ -241,7 +241,7 @@
     background-image:url("assets/img/institucional.webp");
     background-size:cover;background-position:center 30%}
   .essencia__foto::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(to bottom,rgba(30,48,32,.2) 0%,rgba(30,48,32,.6) 55%,rgba(20,35,22,.97) 100%)}
+    background:linear-gradient(to bottom,rgba(30,48,32,.05) 0%,rgba(30,48,32,.35) 45%,rgba(20,35,22,.92) 100%)}
   .essencia__foto-content{position:absolute;bottom:0;left:0;right:0;
     padding:clamp(1.4rem,4vw,2.4rem) clamp(20px,5vw,80px);z-index:2}
   .essencia__foto-content .eyebrow{color:var(--gold-2);margin-bottom:.5rem}
