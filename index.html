@@ -300,11 +300,10 @@
   .essencia__foto{display:none}
   /* camada 1 — imagem bem suave */
   .essencia::before{content:"";position:absolute;inset:0;z-index:1;
-    background-image:url("assets/img/institucional.webp");
-    background-size:cover;background-position:center 38%;opacity:.42;filter:none;transform:none}
+    background:linear-gradient(to bottom,rgba(30,48,32,.38) 0%,rgba(30,48,32,.32) 45%,rgba(30,48,32,.42) 100%),
+    url("assets/img/institucional.webp") center 38%/cover}
   /* camada 2 — overlay escuro cobrindo a imagem */
-  .essencia::after{content:"";position:absolute;inset:0;z-index:2;
-    background:linear-gradient(to bottom,rgba(30,48,32,.38) 0%,rgba(30,48,32,.32) 45%,rgba(30,48,32,.42) 100%)}
+  .essencia::after{display:none}
   /* linha dourada */
   .essencia__gold-line{position:absolute;top:0;left:0;right:0;height:1px;z-index:5;
     background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--gold-2) 50%,var(--gold) 70%,transparent)}
@@ -485,10 +484,10 @@
   /* ══════════════════════════════════════════════════════════
      6. REVENDA
   ══════════════════════════════════════════════════════════ */
-  .revenda{position:relative;background-image:url("assets/img/revenda.webp");
-    background-size:cover;background-position:center;color:var(--cream);isolation:isolate}
+  .revenda{position:relative;background:none;color:var(--cream)}
   .revenda::before{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(to bottom,rgba(18,28,18,.88) 0%,rgba(18,28,18,.85) 45%,rgba(18,28,18,.90) 100%)}
+    background:linear-gradient(to bottom,rgba(18,28,18,.88) 0%,rgba(18,28,18,.85) 45%,rgba(18,28,18,.90) 100%),
+    url("assets/img/revenda.webp") center/cover}
   .revenda__inner{position:relative;z-index:3;max-width:800px}
   .revenda__text{color:rgba(245,241,232,.78);font-size:clamp(1rem,2vw,1.12rem);
     max-width:50ch;margin-bottom:2rem;font-weight:300}
@@ -501,10 +500,10 @@
   /* ══════════════════════════════════════════════════════════
      6b. EVENTOS
   ══════════════════════════════════════════════════════════ */
-  .eventos{position:relative;overflow:hidden;background-image:url("assets/img/eventos.webp");
-    background-size:cover;background-position:center 42%;color:var(--cream);isolation:isolate}
+  .eventos{position:relative;overflow:hidden;background:none;color:var(--cream)}
   .eventos::before{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(to bottom,rgba(10,10,10,.82) 0%,rgba(10,10,10,.78) 45%,rgba(10,10,10,.85) 100%)}
+    background:linear-gradient(to bottom,rgba(10,10,10,.82) 0%,rgba(10,10,10,.78) 45%,rgba(10,10,10,.85) 100%),
+    url("assets/img/eventos.webp") center 42%/cover}
   .eventos__bg{display:none}
   .eventos__overlay{display:none}
   .eventos .section__inner{position:relative;z-index:2}
