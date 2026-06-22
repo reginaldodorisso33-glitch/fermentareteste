@@ -234,54 +234,44 @@
   @keyframes bob{0%,100%{opacity:0;transform:translate(-50%,0)}50%{opacity:1;transform:translate(-50%,10px)}}
 
   /* ══════════════════════════════════════════════════════════
-     2. MANIFESTO
+     2. FUSÃO — NOSSA ESSÊNCIA + QUEM SOMOS
   ══════════════════════════════════════════════════════════ */
-  .manifesto{background:var(--cream);text-align:center;padding-top:clamp(48px,5vw,80px);position:relative}
-  .manifesto::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:
-      linear-gradient(rgba(245,241,232,.72) 0%, rgba(245,241,232,.82) 60%, rgba(245,241,232,.95) 100%),
-      url("assets/img/manifesto.webp");
+  .essencia{background:var(--olive-deep);color:var(--cream);padding:0;min-height:auto;display:block}
+  .essencia__foto{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;
+    background-image:url("assets/img/institucional.webp");
     background-size:cover;background-position:center 30%}
-  .manifesto::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(ellipse 70% 50% at 50% 30%,rgba(79,107,67,.06),transparent 65%),
-      radial-gradient(ellipse 40% 40% at 80% 80%,rgba(201,162,75,.05),transparent 60%)}
-  .manifesto__inner{position:relative;z-index:1;max-width:740px;margin-inline:auto}
-  .manifesto__title{font-size:clamp(2rem,5.5vw,3.5rem);letter-spacing:-.015em;color:var(--olive);margin:.3rem 0 0}
-  .manifesto__body{font-size:clamp(1.05rem,2vw,1.22rem);color:rgba(17,17,17,.72);margin-top:1.6rem;font-weight:300}
-  .manifesto__body p+p{margin-top:1rem}
-  .manifesto .brushline{margin-top:2.2rem}
-
-  /* ══════════════════════════════════════════════════════════
-     2b. INSTITUCIONAL
-  ══════════════════════════════════════════════════════════ */
-  .institucional{background:var(--cream-2)}
-  .institucional::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(ellipse 55% 50% at 85% 15%,rgba(201,162,75,.10),transparent 60%),
-      radial-gradient(ellipse 45% 45% at 5% 90%,rgba(46,74,50,.08),transparent 60%)}
-  .institucional .section__inner{position:relative;z-index:1}
-  .inst-grid{display:grid;grid-template-columns:1fr;gap:clamp(2.4rem,5vw,3.5rem);align-items:center}
-  @media(min-width:900px){.inst-grid{grid-template-columns:.95fr 1.05fr}}
-  .inst-visual{position:relative;border-radius:var(--r);overflow:hidden;
-    aspect-ratio:4/5;box-shadow:var(--shadow-card);min-height:280px;
-    background-image:url("assets/img/institucional.webp");background-size:cover;background-position:center 30%}
-  .inst-visual::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(to top,rgba(17,17,17,.45) 0%,transparent 45%)}
-  .inst-visual__caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.4rem 1.6rem;
-    font-family:var(--font-d);font-style:italic;color:rgba(245,241,232,.95);font-size:.95rem}
-  .inst-content--solo{max-width:760px;margin-inline:auto;text-align:center}
-  .inst-content h2{font-size:clamp(2rem,4.5vw,3.1rem);letter-spacing:-.015em;color:var(--olive);margin-bottom:2.2rem}
-  .inst-content h2 em{font-style:italic;color:var(--wine);font-weight:300}
-  .inst-list{display:flex;flex-direction:column;gap:1.1rem;margin-top:.4rem;text-align:left}
-  .inst-item{display:flex;gap:.95rem;align-items:flex-start}
-  .inst-item__ic{flex:none;width:38px;height:38px;border-radius:50%;background:var(--cream);
-    border:1px solid rgba(46,74,50,.18);display:grid;place-items:center;color:var(--olive);
-    box-shadow:0 6px 18px -10px rgba(17,17,17,.25)}
-  .inst-item__ic svg{width:18px;height:18px}
-  .inst-item p{font-size:.94rem;color:rgba(17,17,17,.68);font-weight:300;line-height:1.6;padding-top:.3rem}
-  .inst-item strong{color:var(--olive);font-weight:600}
-  .inst-content .brushline{margin-top:2rem}
+  .essencia__foto::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,rgba(30,48,32,.2) 0%,rgba(30,48,32,.6) 55%,rgba(20,35,22,.97) 100%)}
+  .essencia__foto-content{position:absolute;bottom:0;left:0;right:0;
+    padding:clamp(1.4rem,4vw,2.4rem) clamp(20px,5vw,80px);z-index:2}
+  .essencia__foto-content .eyebrow{color:var(--gold-2);margin-bottom:.5rem}
+  .essencia__foto-content .eyebrow::before,.essencia__foto-content .eyebrow::after{background:var(--gold-2)}
+  .essencia__foto-content .rule__line,.essencia__foto-content .rule__dots i{background:var(--wine)}
+  .essencia__title{font-family:var(--font-d);font-size:clamp(1.6rem,5vw,2.8rem);
+    color:#fff;line-height:1.1;font-weight:500;margin-top:.6rem}
+  .essencia__title em{color:var(--gold-2);font-style:italic;font-weight:300}
+  .essencia__body{padding:clamp(1.6rem,4vw,2.8rem) clamp(20px,5vw,80px) clamp(2.4rem,6vw,4rem);
+    position:relative;z-index:1}
+  .essencia__body::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 50% at 80% 20%,rgba(201,130,40,.08),transparent 65%)}
+  .essencia__sub{font-size:clamp(.9rem,2vw,1rem);color:rgba(245,241,232,.65);
+    font-weight:300;line-height:1.7;margin-bottom:1.6rem;position:relative;z-index:1}
+  .essencia__sub p+p{margin-top:.6rem}
+  .essencia__list{display:flex;flex-direction:column;gap:.9rem;margin-bottom:1.8rem;position:relative;z-index:1}
+  .essencia__item{display:flex;gap:.85rem;align-items:flex-start}
+  .essencia__ic{flex:none;width:34px;height:34px;border-radius:50%;
+    background:rgba(201,162,75,.1);border:1px solid rgba(201,162,75,.2);
+    display:grid;place-items:center}
+  .essencia__ic svg{width:15px;height:15px;color:var(--gold-2)}
+  .essencia__item p{font-size:.88rem;color:rgba(245,241,232,.68);font-weight:300;
+    line-height:1.6;padding-top:.25rem}
+  .essencia__item strong{color:var(--gold-2);font-weight:600}
+  .essencia__brushline{display:inline-flex;align-items:center;gap:.65rem;
+    background:rgba(46,74,50,.55);border:1px solid rgba(201,162,75,.18);
+    color:var(--cream);padding:.75rem 1.1rem;
+    font-family:var(--font-d);font-style:italic;font-size:.95rem;line-height:1.3;
+    position:relative;z-index:1}
+  .essencia__brushline svg{width:15px;height:15px;flex:none;color:var(--gold)}
 
   /* ══════════════════════════════════════════════════════════
      3. PROCESSO
@@ -653,8 +643,7 @@
       </span>
     </a>
     <nav class="nav__links" aria-label="Navegação principal">
-      <a href="#manifesto">Manifesto</a>
-      <a href="#institucional">Institucional</a>
+      <a href="#manifesto">Nossa essência</a>
       <a href="#processo">Processo</a>
       <a href="#sabores">Sabores</a>
       <a href="#eventos">Eventos</a>
@@ -668,8 +657,7 @@
 
   <!-- MENU MOBILE -->
   <div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
-    <a href="#manifesto">Manifesto</a>
-    <a href="#institucional">Institucional</a>
+    <a href="#manifesto">Nossa essência</a>
     <a href="#processo">Processo</a>
     <a href="#sabores">Sabores</a>
     <a href="#eventos">Eventos</a>
@@ -764,78 +752,54 @@
       </div>
     </div>
 
-    <!-- ═══ 2. MANIFESTO ══════════════════════════════════════ -->
-    <section class="section manifesto" id="manifesto">
-      <div class="section__inner manifesto__inner">
-        <p class="eyebrow eyebrow--center" data-reveal>Nossa essência</p>
-        <div class="rule rule--center" data-reveal aria-hidden="true">
-          <span class="rule__line"></span>
-          <span class="rule__dots"><i></i><i></i><i></i></span>
-          <span class="rule__line"></span>
+    <!-- ═══ 2. NOSSA ESSÊNCIA + QUEM SOMOS (fusão) ══════════════ -->
+    <section class="essencia" id="manifesto">
+      <div class="essencia__foto" aria-hidden="true">
+        <div class="essencia__foto-content" data-reveal>
+          <p class="eyebrow eyebrow--light">Nossa essência · Quem somos</p>
+          <div class="rule rule--light" aria-hidden="true">
+            <span class="rule__line"></span>
+            <span class="rule__dots"><i></i><i></i><i></i></span>
+            <span class="rule__line rule__line--grow"></span>
+          </div>
+          <h2 class="essencia__title">Uma marca que nasceu da <em>paixão pelo tempo certo.</em></h2>
         </div>
-        <h2 class="manifesto__title" data-reveal>Pizza boa começa no tempo certo.</h2>
-        <div class="manifesto__body" data-reveal>
+      </div>
+      <div class="essencia__body" data-reveal>
+        <div class="essencia__sub">
           <p>Na fermentação lenta. Na massa leve. No cuidado em cada detalhe.</p>
           <p>Criamos pizzas artesanais congeladas para quem busca praticidade sem abrir mão do sabor verdadeiro.</p>
         </div>
-        <p data-reveal style="margin-top:2rem">
-          <span class="brushline">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/></svg>
-            Sem aditivos. Só tempo e ingredientes de verdade.
-          </span>
-        </p>
-      </div>
-    </section>
-
-    <!-- ═══ 2b. INSTITUCIONAL ═════════════════════════════════ -->
-    <section class="section institucional" id="institucional">
-      <div class="section__inner">
-        <div class="inst-grid">
-          <div class="inst-visual" data-reveal-scale>
-            <p class="inst-visual__caption">Mãos que moldam cada massa com cuidado artesanal.</p>
+        <div class="essencia__list">
+          <div class="essencia__item">
+            <div class="essencia__ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/></svg>
+            </div>
+            <p><strong>Nasceu da paixão</strong> pela fermentação natural e pelo processo artesanal, sem pressa e sem atalhos.</p>
           </div>
-          <div class="inst-content" data-reveal>
-            <p class="eyebrow">Quem somos</p>
-            <div class="rule" aria-hidden="true">
-              <span class="rule__line"></span>
-              <span class="rule__dots"><i></i><i></i><i></i></span>
-              <span class="rule__line"></span>
+          <div class="essencia__item">
+            <div class="essencia__ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
-            <h2>Uma marca que nasceu da <em>paixão pelo tempo certo.</em></h2>
-            <div class="inst-list">
-              <div class="inst-item">
-                <span class="inst-item__ic" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/></svg>
-                </span>
-                <p><strong>Nasceu da paixão</strong> pela fermentação natural e pelo processo artesanal, sem pressa e sem atalhos.</p>
-              </div>
-              <div class="inst-item">
-                <span class="inst-item__ic" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </span>
-                <p>Cada pizza é pensada para <strong>unir praticidade e sabor real</strong> — sem perder a alma artesanal.</p>
-              </div>
-              <div class="inst-item">
-                <span class="inst-item__ic" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                </span>
-                <p>Produção artesanal, <strong>ingredientes selecionados</strong> e respeito total ao tempo de maturação da massa.</p>
-              </div>
-              <div class="inst-item">
-                <span class="inst-item__ic" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </span>
-                <p>Nosso compromisso é entregar uma <strong>experiência premium</strong> — em casa, no comércio ou em eventos.</p>
-              </div>
+            <p>Cada pizza é pensada para <strong>unir praticidade e sabor real</strong> — sem perder a alma artesanal.</p>
+          </div>
+          <div class="essencia__item">
+            <div class="essencia__ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
             </div>
-            <p>
-              <span class="brushline">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/></svg>
-                Tempo, fogo e ingredientes de verdade — essa é a Fermentare.
-              </span>
-            </p>
+            <p>Produção artesanal, <strong>ingredientes selecionados</strong> e respeito total ao tempo de maturação da massa.</p>
+          </div>
+          <div class="essencia__item">
+            <div class="essencia__ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p>Nosso compromisso é entregar uma <strong>experiência premium</strong> — em casa, no comércio ou em eventos.</p>
           </div>
         </div>
+        <span class="essencia__brushline">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/></svg>
+          Tempo, fogo e ingredientes de verdade — essa é a Fermentare.
+        </span>
       </div>
     </section>
 
