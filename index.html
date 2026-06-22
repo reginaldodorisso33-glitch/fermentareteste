@@ -183,7 +183,14 @@
      1. HERO
   ══════════════════════════════════════════════════════════ */
   .hero{align-items:center;justify-content:center;overflow:hidden;
-    padding-top:clamp(72px,10vw,100px);padding-bottom:clamp(48px,6vw,80px)}
+    min-height:100svh;
+    padding-top:clamp(80px,12vw,120px);padding-bottom:clamp(60px,8vw,100px)}
+
+  /* animações de entrada */
+  @keyframes heroFadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  @keyframes heroFadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes shimmerBtn{0%{background-position:200% center}100%{background-position:-200% center}}
+  @keyframes bob{0%,100%{opacity:0;transform:translate(-50%,0)}50%{opacity:1;transform:translate(-50%,10px)}}
 
   /* multicamada: foto + oliva → calor → fogo → profundidade */
   .hero__bg{position:absolute;inset:0;z-index:0;
@@ -207,28 +214,64 @@
       rgba(30,48,32,.15) 100%)}
   .hero__inner{position:relative;z-index:2;color:var(--cream);
     text-align:center;display:flex;flex-direction:column;align-items:center;max-width:640px}
-  .hero__title{font-size:clamp(2.4rem,8vw,4.8rem);letter-spacing:-.02em;margin-bottom:.5rem;font-weight:500;line-height:1.02}
+
+  /* entradas escalonadas */
+  .hero .eyebrow{animation:heroFadeIn .8s var(--ease) .1s both}
+  .hero__title{font-size:clamp(2.4rem,8vw,4.8rem);letter-spacing:-.02em;margin-bottom:.5rem;
+    font-weight:500;line-height:1.02;animation:heroFadeUp .9s var(--ease) .25s both}
   .hero__title em{font-style:italic;color:var(--gold-2);font-weight:300;display:block}
-  /* divisor losangos */
-  .hero__rule{display:flex;align-items:center;gap:.55rem;justify-content:center;margin:.7rem 0 1.1rem}
+  .hero__rule{display:flex;align-items:center;gap:.55rem;justify-content:center;margin:.7rem 0 1.1rem;
+    animation:heroFadeIn .8s var(--ease) .2s both}
   .hero__rule span{height:1.5px;width:clamp(28px,5vw,48px);background:var(--wine)}
   .hero__rule i{width:7px;height:7px;background:var(--wine);transform:rotate(45deg);display:block}
   .hero__sub{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,241,232,.78);max-width:32ch;
-    margin-bottom:1.6rem;font-weight:300;line-height:1.65;text-align:center}
-  .hero__actions{display:flex;flex-direction:column;gap:.65rem;width:100%;max-width:320px;margin-bottom:1.8rem}
+    margin-bottom:1.8rem;font-weight:300;line-height:1.65;text-align:center;
+    animation:heroFadeUp .9s var(--ease) .4s both}
+
+  /* ── BOTÕES HERO — Opção A (dourado shimmer + ghost) ── */
+  .hero__actions{display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:320px;margin-bottom:1.8rem;
+    animation:heroFadeUp .9s var(--ease) .55s both}
   .hero__actions .btn{width:100%;justify-content:center}
-  .hero__event-link{display:inline-flex;align-items:center;gap:.5rem;
-    font-size:.82rem;font-weight:500;letter-spacing:.02em;color:rgba(245,241,232,.6);
-    transition:color .3s,gap .3s}
+  .btn--hero-primary{display:flex;align-items:center;justify-content:center;gap:.65rem;
+    width:100%;padding:1rem 1.6rem;border:none;cursor:pointer;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-2),#d4a93a,var(--gold));
+    background-size:300% auto;animation:shimmerBtn 3s linear infinite;
+    color:var(--olive-deep);font-family:var(--font-b);font-weight:700;
+    font-size:.92rem;letter-spacing:.03em;
+    box-shadow:0 8px 32px -10px rgba(201,162,75,.55),0 2px 8px rgba(0,0,0,.2);
+    transition:transform .3s var(--ease),box-shadow .3s}
+  .btn--hero-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(201,162,75,.65)}
+  .btn--hero-primary svg{width:18px;height:18px;flex:none}
+  .btn--hero-secondary{display:flex;align-items:center;justify-content:center;gap:.65rem;
+    width:100%;padding:.95rem 1.6rem;border-radius:999px;cursor:pointer;
+    background:transparent;color:var(--cream);
+    font-family:var(--font-b);font-weight:500;font-size:.88rem;letter-spacing:.04em;
+    border:1px solid rgba(245,241,232,.28);
+    box-shadow:inset 0 1px 0 rgba(245,241,232,.08);
+    transition:border-color .3s,background .3s,transform .3s}
+  .btn--hero-secondary:hover{border-color:rgba(245,241,232,.55);
+    background:rgba(245,241,232,.06);transform:translateY(-2px)}
+
+  /* badges */
+  .hero__badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;
+    animation:heroFadeIn 1s var(--ease) .8s both}
+  .hero__badge{display:flex;align-items:center;gap:.35rem;font-size:.65rem;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:rgba(245,241,232,.65);
+    background:rgba(245,241,232,.07);border:1px solid rgba(245,241,232,.12);
+    padding:.35rem .75rem;border-radius:999px}
+  .hero__badge svg{width:10px;height:10px;color:var(--gold-2)}
+
+  .hero__event-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;
+    font-size:.82rem;font-weight:500;letter-spacing:.02em;color:rgba(245,241,232,.55);
+    transition:color .3s,gap .3s;animation:heroFadeIn 1s var(--ease) 1s both}
   .hero__event-link svg{width:14px;height:14px;color:var(--gold-2);flex:none}
-  .hero__event-link span{border-bottom:1px solid rgba(245,241,232,.25);padding-bottom:1px;transition:border-color .3s}
+  .hero__event-link span{border-bottom:1px solid rgba(245,241,232,.2);padding-bottom:1px;transition:border-color .3s}
   .hero__event-link:hover{color:var(--cream);gap:.7rem}
   .hero__event-link:hover span{border-color:var(--gold-2)}
   .hero__cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;
     width:24px;height:38px;border:1px solid rgba(245,241,232,.4);border-radius:14px}
   .hero__cue span{position:absolute;top:8px;left:50%;width:3px;height:7px;border-radius:2px;
     background:rgba(245,241,232,.65);transform:translateX(-50%);animation:bob 1.8s var(--ease) infinite}
-  @keyframes bob{0%,100%{opacity:0;transform:translate(-50%,0)}50%{opacity:1;transform:translate(-50%,10px)}}
 
   /* ══════════════════════════════════════════════════════════
      2. FUSÃO — NOSSA ESSÊNCIA + QUEM SOMOS
@@ -673,25 +716,39 @@
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="section__inner hero__inner">
-        <p class="eyebrow eyebrow--light" data-reveal>Fermentação natural · Pizzas congeladas</p>
-        <h1 class="hero__title" data-reveal>
+        <p class="eyebrow eyebrow--light eyebrow--center">Fermentação natural · Pizzas congeladas</p>
+        <h1 class="hero__title">
           Fermentação natural.
           <em>Sabor de verdade.</em>
         </h1>
-        <div class="hero__rule" data-reveal aria-hidden="true">
+        <div class="hero__rule" aria-hidden="true">
           <span></span><i></i><i></i><i></i><span></span>
         </div>
-        <p class="hero__sub" data-reveal>
+        <p class="hero__sub">
           Pré-assadas em forno de alta temperatura, prontas em 7 a 10 minutos no forno ou air fryer.
         </p>
-        <div class="hero__actions" data-reveal>
-          <a class="btn btn--solid" href="https://wa.me/" rel="noopener">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.493a.5.5 0 0 0 .613.635l5.78-1.517A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.089-1.395l-.361-.214-3.737.98.998-3.648-.235-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <div class="hero__actions">
+          <a class="btn--hero-primary" href="https://wa.me/" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.493a.5.5 0 0 0 .613.635l5.78-1.517A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.089-1.395l-.361-.214-3.737.98.998-3.648-.235-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
             Fazer pedido no WhatsApp
           </a>
-          <a class="btn btn--ghost-light" href="#revenda">Seja um parceiro revendedor</a>
+          <a class="btn--hero-secondary" href="#revenda">Seja um parceiro revendedor</a>
         </div>
-        <a class="hero__event-link" href="#eventos" data-reveal>
+        <div class="hero__badges">
+          <span class="hero__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/></svg>
+            Sem aditivos
+          </span>
+          <span class="hero__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            Pronta em 7–10 min
+          </span>
+          <span class="hero__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Artesanal
+          </span>
+        </div>
+        <a class="hero__event-link" href="#eventos">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21c4-3 7-6.5 7-10a7 7 0 0 0-14 0c0 3.5 3 7 7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
           <span>Eventos com pizza artesanal ao vivo. Conheça nossa experiência →</span>
         </a>
