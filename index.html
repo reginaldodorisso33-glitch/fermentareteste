@@ -684,6 +684,11 @@
   }
   /* GARANTIR CONTEÚDO ACIMA DAS CAMADAS */
   .essencia__foto-content,.essencia__body,.revenda__inner,.eventos .section__inner{position:relative;z-index:3}
+
+  /* ── CARD OPÇÃO C — revenda e eventos ── */
+  .content-card{background:rgba(20,32,20,.82);backdrop-filter:blur(8px);
+    border-left:3px solid var(--gold);padding:clamp(20px,4vw,32px);
+    width:100%;position:relative;z-index:3}
   </style>
 </head>
 <body>
@@ -1152,7 +1157,7 @@
       <div class="eventos__bg" aria-hidden="true"></div>
       <div class="eventos__overlay" aria-hidden="true"></div>
       <div class="section__inner">
-        <header class="eventos__head" data-reveal>
+        <div class="content-card">
           <span class="eventos__live"><i></i>Ao vivo no seu evento</span>
           <p class="eyebrow eyebrow--center">Para sua celebração</p>
           <div class="rule rule--center rule--light" aria-hidden="true">
@@ -1210,12 +1215,14 @@
           <a class="btn btn--wine" href="https://wa.me/" rel="noopener">Quero contratar para evento</a>
           <p class="eventos__cta-note">Disponibilidade sujeita à agenda e à região de atendimento.</p>
         </div>
+        </div>
       </div>
     </section>
 
     <!-- ═══ 6. REVENDA ════════════════════════════════════════ -->
     <section class="section revenda" id="revenda">
       <div class="section__inner revenda__inner" data-reveal>
+        <div class="content-card">
         <p class="eyebrow eyebrow--light">Para o seu negócio</p>
         <h2 class="brand-title">
           <span class="ln" style="color:var(--gold-2)">Abasteça seu comércio</span>
@@ -1239,6 +1246,7 @@
           <li>Validade prolongada — até 3 meses</li>
         </ul>
         <a class="btn btn--wine" href="https://wa.me/" rel="noopener">Quero revender</a>
+        </div>
       </div>
     </section>
 
