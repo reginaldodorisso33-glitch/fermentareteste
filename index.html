@@ -194,7 +194,7 @@
       radial-gradient(ellipse 70% 55% at 78% 25%, rgba(201,130,40,.18) 0%, transparent 60%),
       radial-gradient(ellipse 50% 70% at 15% 80%, rgba(37,57,31,.35) 0%, transparent 55%),
       radial-gradient(ellipse 90% 60% at 50% 110%, rgba(158,43,43,.12) 0%, transparent 55%),
-      linear-gradient(148deg, rgba(46,74,50,.22) 0%, rgba(61,92,54,.15) 30%, rgba(42,64,48,.22) 60%, rgba(30,48,32,.38) 100%),
+      linear-gradient(148deg, rgba(46,74,50,.28) 0%, rgba(61,92,54,.18) 30%, rgba(42,64,48,.28) 60%, rgba(30,48,32,.45) 100%),
       url("assets/img/hero.webp");
     background-size:cover;background-position:center 35%}
   .hero__bg::before{content:"";position:absolute;inset:0;
@@ -239,9 +239,9 @@
   .manifesto{background:var(--cream);text-align:center;padding-top:clamp(48px,5vw,80px);position:relative}
   .manifesto::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
-      linear-gradient(rgba(245,241,232,.93),rgba(245,241,232,.93)),
+      linear-gradient(rgba(245,241,232,.88),rgba(245,241,232,.88)),
       url("assets/img/manifesto.webp");
-    background-size:cover;background-position:center}
+    background-size:cover;background-position:center 40%}
   .manifesto::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
       radial-gradient(ellipse 70% 50% at 50% 30%,rgba(79,107,67,.06),transparent 65%),
@@ -265,7 +265,7 @@
   @media(min-width:900px){.inst-grid{grid-template-columns:.95fr 1.05fr}}
   .inst-visual{position:relative;border-radius:var(--r);overflow:hidden;
     aspect-ratio:4/5;box-shadow:var(--shadow-card);min-height:280px;
-    background-image:url("assets/img/institucional.webp");background-size:cover;background-position:center}
+    background-image:url("assets/img/institucional.webp");background-size:cover;background-position:center 30%}
   .inst-visual::after{content:"";position:absolute;inset:0;
     background:linear-gradient(to top,rgba(17,17,17,.45) 0%,transparent 45%)}
   .inst-visual__caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.4rem 1.6rem;
@@ -326,11 +326,11 @@
     background:linear-gradient(to bottom,transparent 55%,rgba(17,17,17,.35))}
   .flavor__img-inner{position:absolute;inset:0;transition:transform .65s var(--ease)}
   .flavor:hover .flavor__img-inner{transform:scale(1.06)}
-  .flavor__img--marguerita .flavor__img-inner{background:radial-gradient(circle at 50% 50%,#c0492f,#7c2a1c)}
-  .flavor__img--frango    .flavor__img-inner{background:radial-gradient(circle at 50% 50%,#d7a86b,#9c6b34)}
-  .flavor__img--queijos   .flavor__img-inner{background:radial-gradient(circle at 50% 50%,#e3c98a,#b89a52)}
-  .flavor__img--calabresa .flavor__img-inner{background:radial-gradient(circle at 50% 50%,#b03d34,#7a241f)}
-  .flavor__img--pepperoni .flavor__img-inner{background:radial-gradient(circle at 50% 50%,#b8362b,#7c211a)}
+  .flavor__img--marguerita .flavor__img-inner{background:url("assets/img/sabores-marguerita.webp") center/cover}
+  .flavor__img--frango    .flavor__img-inner{background:url("assets/img/sabores-frango.webp") center/cover}
+  .flavor__img--queijos   .flavor__img-inner{background:url("assets/img/sabores-queijos.webp") center/cover}
+  .flavor__img--calabresa .flavor__img-inner{background:url("assets/img/sabores-calabresa.webp") center/cover}
+  .flavor__img--pepperoni .flavor__img-inner{background:url("assets/img/sabores-pepperoni.webp") center/cover}
   .flavor__body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
   .flavor__top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
   .flavor__seal{font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;color:var(--leaf);
@@ -352,7 +352,7 @@
   .preparo .section__inner{position:relative;z-index:1}
   .prep-hero-img{width:100%;aspect-ratio:16/8;border-radius:var(--r);overflow:hidden;
     margin-top:clamp(1.6rem,3vw,2.4rem);box-shadow:var(--shadow-card);
-    background-image:url("assets/img/preparo.webp");background-size:cover;background-position:center}
+    background-image:url("assets/img/preparo.webp");background-size:cover;background-position:center 40%}
   .prep-steps{display:grid;grid-template-columns:1fr;gap:clamp(1rem,3vw,1.4rem);margin-top:clamp(2rem,4vw,3rem)}
   @media(min-width:560px){.prep-steps{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:900px){.prep-steps{grid-template-columns:repeat(4,1fr)}}
@@ -376,7 +376,7 @@
   .revenda::before{content:"";position:absolute;inset:0;
     background:
       radial-gradient(ellipse 55% 60% at 85% 30%,rgba(201,130,40,.15),transparent 60%),
-      linear-gradient(100deg,rgba(20,35,22,.92) 0%,rgba(20,35,22,.78) 45%,rgba(20,35,22,.4) 100%),
+      linear-gradient(100deg,rgba(20,35,22,.88) 0%,rgba(20,35,22,.72) 45%,rgba(20,35,22,.35) 100%),
       url("assets/img/revenda.webp");
     background-size:cover;background-position:center}
   .revenda__inner{position:relative;z-index:1;max-width:800px}
