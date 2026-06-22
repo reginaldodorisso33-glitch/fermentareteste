@@ -321,34 +321,47 @@
   .sabores{background:var(--cream-2)}
   .sabores::before{content:"";position:absolute;inset:0;
     background:radial-gradient(ellipse 60% 40% at 50% 90%,rgba(46,74,50,.06),transparent 70%)}
-  .flavor-grid{display:grid;grid-template-columns:1fr;gap:clamp(1.2rem,2.5vw,1.8rem)}
-  @media(min-width:620px){.flavor-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(min-width:980px){.flavor-grid{grid-template-columns:repeat(3,1fr)}}
-  .flavor{background:var(--cream);border-radius:var(--r);overflow:hidden;
-    box-shadow:var(--shadow-card);display:flex;flex-direction:column;
-    transition:transform .45s var(--ease),box-shadow .45s}
-  .flavor:hover{transform:translateY(-8px);box-shadow:var(--shadow-card-hover)}
-  .flavor__img{aspect-ratio:16/10;background-size:cover;background-position:center;position:relative;overflow:hidden}
-  .flavor__img::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(to bottom,transparent 55%,rgba(17,17,17,.35))}
-  .flavor__img-inner{position:absolute;inset:0;transition:transform .65s var(--ease)}
-  .flavor:hover .flavor__img-inner{transform:scale(1.06)}
-  .flavor__img--marguerita .flavor__img-inner{background:url("assets/img/sabores-marguerita.webp") center/cover}
-  .flavor__img--frango    .flavor__img-inner{background:url("assets/img/sabores-frango.webp") center/cover}
-  .flavor__img--queijos   .flavor__img-inner{background:url("assets/img/sabores-queijos.webp") center/cover}
-  .flavor__img--calabresa .flavor__img-inner{background:url("assets/img/sabores-calabresa.webp") center/cover}
-  .flavor__img--pepperoni .flavor__img-inner{background:url("assets/img/sabores-pepperoni.webp") center/cover}
-  .flavor__body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
-  .flavor__top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
-  .flavor__seal{font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;color:var(--leaf);
-    padding:.28rem .65rem;border:1px solid rgba(79,107,67,.38);border-radius:999px;white-space:nowrap;flex:none}
-  .flavor__size{font-size:.75rem;color:rgba(17,17,17,.5);font-weight:500;white-space:nowrap}
-  .flavor__body h3{font-size:1.25rem;text-transform:uppercase;letter-spacing:.02em;color:var(--olive);line-height:1.1}
-  .flavor__body p{font-size:.88rem;color:rgba(17,17,17,.62);flex:1;font-weight:300}
+  .flavor-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  @media(min-width:900px){.flavor-grid{grid-template-columns:repeat(4,1fr)}}
+
+  .flavor{position:relative;overflow:hidden;aspect-ratio:3/4;border-left:2px solid var(--gold)}
+  .flavor.flavor--wide{grid-column:span 2;aspect-ratio:2/1}
+  @media(min-width:900px){.flavor.flavor--wide{grid-column:span 1;aspect-ratio:3/4}}
+
+  .flavor__bg{position:absolute;inset:0;background-size:cover;background-position:center;
+    transition:transform .65s var(--ease)}
+  .flavor:hover .flavor__bg{transform:scale(1.05)}
+  .flavor__bg--marguerita{background-image:url("assets/img/sabores-marguerita.webp")}
+  .flavor__bg--frango{background-image:url("assets/img/sabores-frango.webp")}
+  .flavor__bg--queijos{background-image:url("assets/img/sabores-queijos.webp")}
+  .flavor__bg--calabresa{background-image:url("assets/img/sabores-calabresa.webp")}
+  .flavor__bg--pepperoni{background-image:url("assets/img/sabores-pepperoni.webp")}
+
+  .flavor__overlay{position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(17,17,17,.96) 0%,rgba(17,17,17,.5) 50%,rgba(17,17,17,.08) 100%)}
+  .flavor__body{position:absolute;inset:0;padding:clamp(10px,2.5vw,14px);
+    display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+  .flavor__top{display:flex;justify-content:space-between;align-items:flex-start}
+  .flavor__seal{font-size:.5rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-2);
+    padding:.18rem .5rem;border:1px solid rgba(201,162,75,.3);border-radius:999px;white-space:nowrap}
+  .flavor__size{font-size:.6rem;color:rgba(255,255,255,.4);font-weight:500}
+  .flavor__bottom{display:flex;flex-direction:column;gap:4px}
+  .flavor__rule{height:1px;width:24px;background:var(--gold);margin-bottom:3px}
+  .flavor__body h3{font-family:var(--font-d);font-size:.92rem;color:#fff;font-weight:500;font-style:italic;line-height:1.1}
+  .flavor__body p{font-size:.65rem;color:rgba(255,255,255,.52);font-weight:300;line-height:1.4}
   .flavor__footer{display:flex;align-items:center;justify-content:space-between;
-    margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--line)}
-  .flavor__price{font-family:var(--font-d);font-size:1.15rem;color:var(--olive);font-weight:500}
-  .flavor__price span{font-size:.7rem;font-family:var(--font-b);color:rgba(17,17,17,.5);font-weight:400;display:block;line-height:1}
+    margin-top:5px;padding-top:5px;border-top:1px solid rgba(255,255,255,.1)}
+  .flavor__price{font-family:var(--font-d);font-size:.85rem;color:var(--gold-2);font-weight:400}
+  .flavor__price span{font-size:.52rem;font-family:var(--font-b);color:rgba(255,255,255,.35);display:block;line-height:1.3}
+  .btn--flavor{background:var(--wine);color:var(--cream);font-size:.58rem;padding:.35rem .65rem;
+    border-radius:999px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+  .btn--flavor:hover{background:var(--wine-deep);transform:translateY(-1px)}
+
+  /* card largo (pepperoni): layout horizontal interno */
+  .flavor--wide .flavor__body{flex-direction:column;justify-content:space-between}
+  .flavor--wide .flavor__bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+  .flavor--wide .flavor__body h3{font-size:1.15rem}
+  .flavor--wide .flavor__right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
 
   /* ══════════════════════════════════════════════════════════
      5. PREPARO (nova seção)
@@ -920,106 +933,103 @@
         <div class="flavor-grid">
 
           <article class="flavor" data-reveal>
-            <div class="flavor__img flavor__img--marguerita">
-              <div class="flavor__img-inner flavor__img--marguerita"></div>
-            </div>
+            <div class="flavor__bg flavor__bg--marguerita"></div>
+            <div class="flavor__overlay"></div>
             <div class="flavor__body">
               <div class="flavor__top">
-                <span class="flavor__seal">Fermentação natural</span>
+                <span class="flavor__seal">Ferm. natural</span>
                 <span class="flavor__size">30 cm</span>
               </div>
-              <h3>Marguerita</h3>
-              <p>Molho de tomate, mozzarella, manjericão fresco e azeite extra virgem.</p>
-              <div class="flavor__footer">
-                <div class="flavor__price">
-                  <span>a partir de</span>
-                  R$ 39,90
+              <div class="flavor__bottom">
+                <div class="flavor__rule"></div>
+                <h3>Marguerita</h3>
+                <p>Molho de tomate, mozzarella, manjericão fresco e azeite extra virgem.</p>
+                <div class="flavor__footer">
+                  <div class="flavor__price"><span>a partir de</span>R$ 39,90</div>
+                  <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir</a>
                 </div>
-                <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir esse sabor</a>
               </div>
             </div>
           </article>
 
           <article class="flavor" data-reveal>
-            <div class="flavor__img flavor__img--frango">
-              <div class="flavor__img-inner flavor__img--frango"></div>
-            </div>
+            <div class="flavor__bg flavor__bg--frango"></div>
+            <div class="flavor__overlay"></div>
             <div class="flavor__body">
               <div class="flavor__top">
-                <span class="flavor__seal">Fermentação natural</span>
+                <span class="flavor__seal">Ferm. natural</span>
                 <span class="flavor__size">30 cm</span>
               </div>
-              <h3>Frango Catupiry</h3>
-              <p>Frango desfiado temperado, catupiry cremoso e mozzarella.</p>
-              <div class="flavor__footer">
-                <div class="flavor__price">
-                  <span>a partir de</span>
-                  R$ 44,90
+              <div class="flavor__bottom">
+                <div class="flavor__rule"></div>
+                <h3>Frango Catupiry</h3>
+                <p>Frango desfiado temperado, catupiry cremoso e mozzarella.</p>
+                <div class="flavor__footer">
+                  <div class="flavor__price"><span>a partir de</span>R$ 44,90</div>
+                  <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir</a>
                 </div>
-                <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir esse sabor</a>
               </div>
             </div>
           </article>
 
           <article class="flavor" data-reveal>
-            <div class="flavor__img flavor__img--queijos">
-              <div class="flavor__img-inner flavor__img--queijos"></div>
-            </div>
+            <div class="flavor__bg flavor__bg--queijos"></div>
+            <div class="flavor__overlay"></div>
             <div class="flavor__body">
               <div class="flavor__top">
-                <span class="flavor__seal">Fermentação natural</span>
+                <span class="flavor__seal">Ferm. natural</span>
                 <span class="flavor__size">30 cm</span>
               </div>
-              <h3>Quatro Queijos</h3>
-              <p>Mozzarella, gorgonzola, parmesão e catupiry.</p>
-              <div class="flavor__footer">
-                <div class="flavor__price">
-                  <span>a partir de</span>
-                  R$ 46,90
+              <div class="flavor__bottom">
+                <div class="flavor__rule"></div>
+                <h3>Quatro Queijos</h3>
+                <p>Mozzarella, gorgonzola, parmesão e catupiry.</p>
+                <div class="flavor__footer">
+                  <div class="flavor__price"><span>a partir de</span>R$ 46,90</div>
+                  <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir</a>
                 </div>
-                <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir esse sabor</a>
               </div>
             </div>
           </article>
 
           <article class="flavor" data-reveal>
-            <div class="flavor__img flavor__img--calabresa">
-              <div class="flavor__img-inner flavor__img--calabresa"></div>
-            </div>
+            <div class="flavor__bg flavor__bg--calabresa"></div>
+            <div class="flavor__overlay"></div>
             <div class="flavor__body">
               <div class="flavor__top">
-                <span class="flavor__seal">Fermentação natural</span>
+                <span class="flavor__seal">Ferm. natural</span>
                 <span class="flavor__size">30 cm</span>
               </div>
-              <h3>Calabresa Catupiry</h3>
-              <p>Calabresa fatiada, catupiry, cebola e mozzarella.</p>
-              <div class="flavor__footer">
-                <div class="flavor__price">
-                  <span>a partir de</span>
-                  R$ 44,90
+              <div class="flavor__bottom">
+                <div class="flavor__rule"></div>
+                <h3>Calabresa Catupiry</h3>
+                <p>Calabresa fatiada, catupiry, cebola e mozzarella.</p>
+                <div class="flavor__footer">
+                  <div class="flavor__price"><span>a partir de</span>R$ 44,90</div>
+                  <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir</a>
                 </div>
-                <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir esse sabor</a>
               </div>
             </div>
           </article>
 
-          <article class="flavor" data-reveal>
-            <div class="flavor__img flavor__img--pepperoni">
-              <div class="flavor__img-inner flavor__img--pepperoni"></div>
-            </div>
+          <article class="flavor flavor--wide" data-reveal>
+            <div class="flavor__bg flavor__bg--pepperoni"></div>
+            <div class="flavor__overlay"></div>
             <div class="flavor__body">
               <div class="flavor__top">
-                <span class="flavor__seal">Fermentação natural</span>
+                <span class="flavor__seal">Ferm. natural</span>
                 <span class="flavor__size">30 cm</span>
               </div>
-              <h3>Pepperoni</h3>
-              <p>Pepperoni italiano, molho artesanal de tomate e mozzarella.</p>
-              <div class="flavor__footer">
-                <div class="flavor__price">
-                  <span>a partir de</span>
-                  R$ 46,90
+              <div class="flavor__bottom-row">
+                <div class="flavor__bottom">
+                  <div class="flavor__rule"></div>
+                  <h3>Pepperoni</h3>
+                  <p>Pepperoni italiano, molho artesanal de tomate e mozzarella.</p>
                 </div>
-                <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir esse sabor</a>
+                <div class="flavor__right">
+                  <div class="flavor__price"><span>a partir de</span>R$ 46,90</div>
+                  <a class="btn btn--flavor" href="https://wa.me/" rel="noopener">Pedir esse sabor</a>
+                </div>
               </div>
             </div>
           </article>
