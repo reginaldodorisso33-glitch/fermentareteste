@@ -489,7 +489,8 @@
     background-image:url("assets/img/revenda.webp");
     background-size:cover;background-position:center}
   .revenda::before{content:"";position:absolute;inset:0;z-index:1;
-    background:rgba(22,38,24,.72)}
+    background:linear-gradient(rgba(22,38,24,.62),rgba(22,38,24,.62)),url("assets/img/revenda.webp");
+    background-size:102%;background-position:center center;filter:blur(2px);transform:scale(1.015)}
   .revenda::after{content:"";position:absolute;inset:0;
     background:inherit;filter:blur(10px);transform:scale(1.08);z-index:0}
   .revenda__inner{position:relative;z-index:2;max-width:800px}
@@ -508,7 +509,8 @@
     background-image:url("assets/img/eventos.webp");
     background-size:cover;background-position:center 40%}
   .eventos::before{content:"";position:absolute;inset:0;z-index:1;
-    background:rgba(10,10,10,.70)}
+    background:linear-gradient(rgba(10,10,10,.58),rgba(10,10,10,.58)),url("assets/img/eventos.webp");
+    background-size:103%;background-position:center 40%;filter:blur(3px);transform:scale(1.02)}
   .eventos::after{content:"";position:absolute;inset:0;
     background:inherit;filter:blur(12px);transform:scale(1.1);z-index:0}
   .eventos__bg{display:none}
