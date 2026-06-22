@@ -285,15 +285,15 @@
   /* ══════════════════════════════════════════════════════════
      2. FUSÃO — NOSSA ESSÊNCIA + QUEM SOMOS
   ══════════════════════════════════════════════════════════ */
-  .essencia{background:var(--olive-deep);color:var(--cream);padding:0;min-height:auto;display:block}
-  .essencia__foto{position:relative;width:100%;aspect-ratio:3/2;overflow:hidden;
+  .essencia{background:var(--olive-deep);color:var(--cream);padding:0;min-height:auto;display:block;
+    position:relative}
+  .essencia__foto{display:none}
+  .essencia::before{content:"";position:absolute;inset:0;z-index:0;
     background-image:url("assets/img/institucional.webp");
-    background-size:cover;background-position:center 20%}
-  .essencia__foto::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(to bottom,rgba(0,0,0,.0) 0%,rgba(0,0,0,.1) 40%,rgba(20,35,22,.88) 100%)}
-  .essencia__foto-content{position:absolute;inset:0;
-    padding:clamp(1.4rem,4vw,2.4rem) clamp(20px,5vw,80px);
-    display:flex;flex-direction:column;justify-content:flex-end;z-index:2}
+    background-size:cover;background-position:center 20%;
+    opacity:.18}
+  .essencia__foto-content{position:relative;z-index:2;
+    padding:clamp(2rem,5vw,3.5rem) clamp(20px,5vw,80px) clamp(1rem,3vw,1.8rem)}
   .essencia__foto-content .eyebrow{color:var(--gold-2);margin-bottom:.5rem}
   .essencia__foto-content .eyebrow::before,.essencia__foto-content .eyebrow::after{background:var(--gold-2)}
   .essencia__foto-content .rule__line,.essencia__foto-content .rule__dots i{background:var(--wine)}
@@ -303,7 +303,7 @@
 
   /* body — Opção C com Animação B */
   .essencia__body{padding:clamp(1.4rem,4vw,2.4rem) clamp(20px,5vw,80px) clamp(2rem,5vw,3.2rem);
-    position:relative;z-index:1}
+    position:relative;z-index:2}
   .essencia__body::before{content:"";position:absolute;inset:0;
     background:radial-gradient(ellipse 70% 50% at 80% 20%,rgba(201,130,40,.08),transparent 65%)}
   .essencia__intro{font-size:.9rem;color:rgba(245,241,232,.58);font-weight:300;
@@ -316,14 +316,21 @@
     border-bottom:1px solid rgba(245,241,232,.07);position:relative;overflow:hidden}
   .essencia__num:last-child{border-bottom:none}
 
-  /* Animação B — linha dourada cresce da esquerda */
+  /* Animação C — número pop + texto desliza da direita */
   @keyframes lineGrow{from{width:0}to{width:100%}}
-  @keyframes essNumFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes countUp{from{opacity:0;transform:translateY(20px) scale(.8)}to{opacity:1;transform:none}}
+  @keyframes slideIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+  @keyframes essIntroFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .essencia__intro{animation:essIntroFade .6s var(--ease) .1s both}
+  .essencia__num{position:relative;overflow:hidden}
   .essencia__num.is-visible::after{content:"";position:absolute;left:0;bottom:0;height:1px;
     background:linear-gradient(to right,var(--gold),transparent);
-    animation:lineGrow .65s var(--ease) forwards}
-  .essencia__num.is-visible .essencia__num-n{animation:essNumFadeUp .5s var(--ease) .05s both}
-  .essencia__num.is-visible .essencia__num-content{animation:essNumFadeUp .55s var(--ease) .15s both}
+    animation:lineGrow .55s var(--ease) forwards}
+  .essencia__num.is-visible .essencia__num-n{animation:countUp .45s var(--ease) .05s both}
+  .essencia__num.is-visible .essencia__num-content{animation:slideIn .45s var(--ease) .1s both}
+  .essencia__num .essencia__num-n{opacity:0}
+  .essencia__num .essencia__num-content{opacity:0}
 
   .essencia__num-n{font-family:var(--font-d);font-size:2rem;font-weight:300;
     color:rgba(201,162,75,.22);line-height:1;flex:none;width:38px}
