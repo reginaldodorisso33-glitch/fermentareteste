@@ -286,7 +286,7 @@
   /* ══════════════════════════════════════════════════════════
      3. PROCESSO
   ══════════════════════════════════════════════════════════ */
-  .processo{background:var(--olive-deep);color:var(--cream)}
+  .processo{background:var(--olive-deep);color:var(--cream);padding-left:clamp(12px,3vw,80px);padding-right:clamp(12px,3vw,80px)}
   .processo::before{content:"";position:absolute;inset:0;z-index:0;
     background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(201,130,40,.12),transparent 65%)}
   .processo .section__inner{position:relative;z-index:1}
@@ -294,18 +294,21 @@
   .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
     background:var(--line-light);border:1px solid var(--line-light);
     border-radius:var(--r);overflow:hidden}
-  .step{background:rgba(30,48,32,.8);padding:clamp(1.8rem,4vw,2.4rem);
-    display:flex;flex-direction:column;gap:.65rem;
+  .step{background:rgba(30,48,32,.8);padding:clamp(1rem,3vw,2.4rem);
+    display:flex;flex-direction:column;gap:.55rem;
     transition:background .4s var(--ease)}
   .step:hover{background:rgba(25,40,27,.95)}
   .step__img{width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;margin-bottom:.3rem;
     background-size:cover;background-position:center;position:relative}
   .step__img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.35),transparent 60%)}
-  .step__num{font-family:var(--font-d);font-size:.85rem;letter-spacing:.12em;color:var(--gold);font-weight:400}
-  .step__ic{width:36px;height:36px;color:var(--gold-2)}
-  .step h3{font-size:1.12rem;text-transform:uppercase;letter-spacing:.03em;color:var(--cream)}
-  .step p{color:rgba(245,241,232,.7);font-size:.9rem;font-weight:300}
+  .step__num{font-family:var(--font-d);font-size:.8rem;letter-spacing:.12em;color:var(--gold);font-weight:400}
+  .step__ic{width:28px;height:28px;color:var(--gold-2)}
+  .step h3{font-size:.88rem;text-transform:uppercase;letter-spacing:.02em;color:var(--cream);line-height:1.2}
+  .step p{color:rgba(245,241,232,.7);font-size:.8rem;font-weight:300;line-height:1.5}
   @media(min-width:1000px){.steps{grid-template-columns:repeat(4,1fr)}}
+  @media(min-width:1000px){.step h3{font-size:1.12rem;letter-spacing:.03em}}
+  @media(min-width:1000px){.step p{font-size:.9rem}}
+  @media(min-width:1000px){.step__ic{width:36px;height:36px}}
 
   /* ══════════════════════════════════════════════════════════
      4. SABORES
@@ -352,20 +355,38 @@
   .prep-hero-img{width:100%;aspect-ratio:16/8;border-radius:var(--r);overflow:hidden;
     margin-top:clamp(1.6rem,3vw,2.4rem);box-shadow:var(--shadow-card);
     background-image:url("assets/img/preparo.webp");background-size:cover;background-position:center 40%}
-  .prep-steps{display:grid;grid-template-columns:1fr;gap:clamp(1rem,3vw,1.4rem);margin-top:clamp(2rem,4vw,3rem)}
-  @media(min-width:560px){.prep-steps{grid-template-columns:repeat(2,1fr)}}
+  .prep-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(.8rem,2vw,1.2rem);margin-top:clamp(2rem,4vw,3rem)}
   @media(min-width:900px){.prep-steps{grid-template-columns:repeat(4,1fr)}}
-  .prep-step{background:var(--cream);border-radius:var(--r);padding:clamp(1.4rem,3vw,2rem);
-    border:1px solid var(--line);display:flex;flex-direction:column;gap:.7rem;
-    position:relative;overflow:hidden;transition:box-shadow .4s,transform .4s}
-  .prep-step::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--olive),var(--leaf))}
-  .prep-step:hover{box-shadow:var(--shadow-card);transform:translateY(-4px)}
-  .prep-step__num{font-family:var(--font-d);font-size:2.5rem;font-weight:300;
-    color:rgba(46,74,50,.12);line-height:1;letter-spacing:-.02em}
-  .prep-step__ic{width:38px;height:38px;color:var(--olive)}
-  .prep-step h3{font-size:1rem;text-transform:uppercase;letter-spacing:.06em;
-    color:var(--olive);font-family:var(--font-b);font-weight:600}
-  .prep-step p{font-size:.88rem;color:rgba(17,17,17,.6);font-weight:300}
+
+  /* flip card */
+  .prep-step{height:180px;perspective:800px;cursor:pointer;border-radius:var(--r)}
+  @media(min-width:560px){.prep-step{height:200px}}
+  .prep-step__inner{position:relative;width:100%;height:100%;
+    transform-style:preserve-3d;transition:transform .55s var(--ease)}
+  .prep-step.is-flipped .prep-step__inner{transform:rotateY(180deg)}
+  .prep-step__front,.prep-step__back{position:absolute;inset:0;
+    border-radius:var(--r);padding:clamp(1rem,3vw,1.6rem);
+    backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    display:flex;flex-direction:column;justify-content:center;gap:.6rem;
+    border:1px solid var(--line);overflow:hidden}
+  .prep-step__front{background:var(--cream);
+    border-top:3px solid var(--olive)}
+  .prep-step__front::before{content:"";position:absolute;bottom:-20px;right:-20px;
+    width:80px;height:80px;border-radius:50%;
+    background:rgba(46,74,50,.06)}
+  .prep-step__back{background:var(--olive);color:var(--cream);
+    transform:rotateY(180deg);border-color:var(--olive);
+    justify-content:center;text-align:center}
+  .prep-step__num{font-family:var(--font-d);font-size:2rem;font-weight:300;
+    color:rgba(46,74,50,.12);line-height:1;letter-spacing:-.02em;position:absolute;top:.8rem;right:1rem}
+  .prep-step__ic{width:32px;height:32px;color:var(--olive);flex:none}
+  .prep-step__front h3{font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--olive);font-family:var(--font-b);font-weight:700;line-height:1.2}
+  .prep-step__back p{font-size:.88rem;color:rgba(245,241,232,.9);font-weight:300;line-height:1.55}
+  .prep-step__back svg{width:28px;height:28px;color:var(--gold-2);margin:0 auto .4rem}
+  .prep-step__hint{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;
+    color:rgba(46,74,50,.4);margin-top:auto;display:flex;align-items:center;gap:.3rem}
+  .prep-step__hint svg{width:10px;height:10px}
   .prep-note{text-align:center;margin-top:2.4rem}
 
   /* ══════════════════════════════════════════════════════════
@@ -995,28 +1016,60 @@
         <div class="prep-hero-img" data-reveal-scale aria-hidden="true"></div>
         <ol class="prep-steps">
           <li class="prep-step" data-reveal>
-            <span class="prep-step__num">01</span>
-            <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><path d="M5 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2"/></svg>
-            <h3>Retire do freezer</h3>
-            <p>Sem precisar descongelar. A pizza vai direto para o calor.</p>
+            <div class="prep-step__inner">
+              <div class="prep-step__front">
+                <span class="prep-step__num">01</span>
+                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><path d="M5 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2"/></svg>
+                <h3>Retire do freezer</h3>
+                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+              </div>
+              <div class="prep-step__back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><path d="M5 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2"/></svg>
+                <p>Sem precisar descongelar. A pizza vai direto para o calor.</p>
+              </div>
+            </div>
           </li>
           <li class="prep-step" data-reveal>
-            <span class="prep-step__num">02</span>
-            <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M6 6V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/><path d="M12 11v4m-2-2h4"/></svg>
-            <h3>Pré-aqueça</h3>
-            <p>Forno a 220°C ou air fryer a 180°C por 5 minutos antes de entrar.</p>
+            <div class="prep-step__inner">
+              <div class="prep-step__front">
+                <span class="prep-step__num">02</span>
+                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M6 6V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/><path d="M12 11v4m-2-2h4"/></svg>
+                <h3>Pré-aqueça</h3>
+                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+              </div>
+              <div class="prep-step__back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M6 6V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/><path d="M12 11v4m-2-2h4"/></svg>
+                <p>Forno a 220°C ou air fryer a 180°C por 5 minutos antes de entrar.</p>
+              </div>
+            </div>
           </li>
           <li class="prep-step" data-reveal>
-            <span class="prep-step__num">03</span>
-            <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <h3>Asse por 7–10 minutos</h3>
-            <p>Até a borda ficar dourada e o queijo borbulhando.</p>
+            <div class="prep-step__inner">
+              <div class="prep-step__front">
+                <span class="prep-step__num">03</span>
+                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <h3>Asse por 7–10 min</h3>
+                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+              </div>
+              <div class="prep-step__back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <p>Até a borda ficar dourada e o queijo borbulhando.</p>
+              </div>
+            </div>
           </li>
           <li class="prep-step" data-reveal>
-            <span class="prep-step__num">04</span>
-            <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/><path d="M8.5 14.5S10 16 12 16s3.5-1.5 3.5-1.5"/></svg>
-            <h3>Sirva e aproveite</h3>
-            <p>Pizza artesanal pronta, crocante e cheia de sabor.</p>
+            <div class="prep-step__inner">
+              <div class="prep-step__front">
+                <span class="prep-step__num">04</span>
+                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/><path d="M8.5 14.5S10 16 12 16s3.5-1.5 3.5-1.5"/></svg>
+                <h3>Sirva e aproveite</h3>
+                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+              </div>
+              <div class="prep-step__back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/><path d="M8.5 14.5S10 16 12 16s3.5-1.5 3.5-1.5"/></svg>
+                <p>Pizza artesanal pronta, crocante e cheia de sabor.</p>
+              </div>
+            </div>
           </li>
         </ol>
         <p class="prep-note" data-reveal>
@@ -1352,7 +1405,14 @@
     els.forEach(function(el){io.observe(el);});
   })();
 
-  // Intro splash
+  // Flip cards — preparo
+  (function(){
+    document.querySelectorAll(".prep-step").forEach(function(card){
+      card.addEventListener("click",function(){
+        card.classList.toggle("is-flipped");
+      });
+    });
+  })();
   (function(){
     var intro   = document.getElementById("intro");
     var iText   = document.getElementById("introText");
