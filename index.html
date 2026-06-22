@@ -239,9 +239,9 @@
   .manifesto{background:var(--cream);text-align:center;padding-top:clamp(48px,5vw,80px);position:relative}
   .manifesto::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
-      linear-gradient(rgba(245,241,232,.88),rgba(245,241,232,.88)),
+      linear-gradient(rgba(245,241,232,.72) 0%, rgba(245,241,232,.82) 60%, rgba(245,241,232,.95) 100%),
       url("assets/img/manifesto.webp");
-    background-size:cover;background-position:center 40%}
+    background-size:cover;background-position:center 30%}
   .manifesto::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
       radial-gradient(ellipse 70% 50% at 50% 30%,rgba(79,107,67,.06),transparent 65%),
@@ -291,7 +291,7 @@
     background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(201,130,40,.12),transparent 65%)}
   .processo .section__inner{position:relative;z-index:1}
   .processo .eyebrow{color:var(--gold)}
-  .steps{display:grid;grid-template-columns:1fr;gap:1px;
+  .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
     background:var(--line-light);border:1px solid var(--line-light);
     border-radius:var(--r);overflow:hidden}
   .step{background:rgba(30,48,32,.8);padding:clamp(1.8rem,4vw,2.4rem);
@@ -305,7 +305,6 @@
   .step__ic{width:36px;height:36px;color:var(--gold-2)}
   .step h3{font-size:1.12rem;text-transform:uppercase;letter-spacing:.03em;color:var(--cream)}
   .step p{color:rgba(245,241,232,.7);font-size:.9rem;font-weight:300}
-  @media(min-width:720px){.steps{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:1000px){.steps{grid-template-columns:repeat(4,1fr)}}
 
   /* ══════════════════════════════════════════════════════════
