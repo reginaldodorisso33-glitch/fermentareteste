@@ -293,7 +293,7 @@
     background-size:cover;background-position:center 20%;
     opacity:.18}
   .essencia__foto-content{position:relative;z-index:2;
-    padding:clamp(2rem,5vw,3.5rem) clamp(20px,5vw,80px) clamp(1rem,3vw,1.8rem)}
+    padding:clamp(2.4rem,6vw,4rem) clamp(20px,5vw,80px) clamp(1rem,3vw,1.6rem)}
   .essencia__foto-content .eyebrow{color:var(--gold-2);margin-bottom:.5rem}
   .essencia__foto-content .eyebrow::before,.essencia__foto-content .eyebrow::after{background:var(--gold-2)}
   .essencia__foto-content .rule__line,.essencia__foto-content .rule__dots i{background:var(--wine)}
@@ -472,14 +472,13 @@
   /* ══════════════════════════════════════════════════════════
      6. REVENDA
   ══════════════════════════════════════════════════════════ */
-  .revenda{background:linear-gradient(155deg,#1e3020 0%,#25391F 50%,#1a2e1c 100%);color:var(--cream);position:relative}
-  .revenda::before{content:"";position:absolute;inset:0;
-    background:
-      radial-gradient(ellipse 55% 60% at 85% 30%,rgba(201,130,40,.15),transparent 60%),
-      linear-gradient(100deg,rgba(20,35,22,.88) 0%,rgba(20,35,22,.72) 45%,rgba(20,35,22,.35) 100%),
-      url("assets/img/revenda.webp");
-    background-size:cover;background-position:center}
-  .revenda__inner{position:relative;z-index:1;max-width:800px}
+  .revenda{color:var(--cream);position:relative}
+  .revenda::before{content:"";position:absolute;inset:0;z-index:0;
+    background-image:url("assets/img/revenda.webp");
+    background-size:cover;background-position:center;opacity:.2}
+  .revenda::after{content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(155deg,rgba(30,48,32,.95) 0%,rgba(37,57,31,.88) 50%,rgba(26,46,28,.92) 100%)}
+  .revenda__inner{position:relative;z-index:2;max-width:800px}
   .revenda__text{color:rgba(245,241,232,.78);font-size:clamp(1rem,2vw,1.12rem);
     max-width:50ch;margin-bottom:2rem;font-weight:300}
   .revenda__benefits{display:grid;grid-template-columns:1fr;gap:.8rem;margin-bottom:2.4rem}
@@ -492,15 +491,11 @@
      6b. EVENTOS
   ══════════════════════════════════════════════════════════ */
   .eventos{background:var(--ink);color:var(--cream);overflow:hidden;position:relative}
-  .eventos::before{content:"";position:absolute;inset:0;z-index:0;
-    background:
-      radial-gradient(ellipse 50% 55% at 12% 15%,rgba(201,162,75,.16),transparent 60%),
-      radial-gradient(ellipse 45% 50% at 90% 85%,rgba(158,43,43,.18),transparent 60%),
-      linear-gradient(rgba(13,13,13,.82),rgba(13,13,13,.88)),
-      url("assets/img/eventos.webp");
-    background-size:cover;background-position:center 40%}
-  .eventos::after{content:"";position:absolute;inset:0;opacity:.05;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .eventos__bg{position:absolute;inset:0;z-index:0;
+    background-image:url("assets/img/eventos.webp");
+    background-size:cover;background-position:center 40%;opacity:.25}
+  .eventos__overlay{position:absolute;inset:0;z-index:0;
+    background:linear-gradient(rgba(13,13,13,.85),rgba(13,13,13,.9))}
   .eventos .section__inner{position:relative;z-index:1}
   .eventos .eyebrow{color:var(--gold)}
   .eventos__live{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.2rem;
@@ -793,16 +788,14 @@
 
     <!-- ═══ 2. NOSSA ESSÊNCIA + QUEM SOMOS (fusão) ══════════════ -->
     <section class="essencia" id="manifesto">
-      <div class="essencia__foto" aria-hidden="true">
-        <div class="essencia__foto-content" data-reveal>
-          <p class="eyebrow eyebrow--light">Nossa essência · Quem somos</p>
-          <div class="rule rule--light" aria-hidden="true">
-            <span class="rule__line"></span>
-            <span class="rule__dots"><i></i><i></i><i></i></span>
-            <span class="rule__line rule__line--grow"></span>
-          </div>
-          <h2 class="essencia__title">Uma marca que nasceu da <em>paixão pelo tempo certo.</em></h2>
+      <div class="essencia__foto-content" data-reveal>
+        <p class="eyebrow eyebrow--light">Nossa essência · Quem somos</p>
+        <div class="rule rule--light" aria-hidden="true">
+          <span class="rule__line"></span>
+          <span class="rule__dots"><i></i><i></i><i></i></span>
+          <span class="rule__line rule__line--grow"></span>
         </div>
+        <h2 class="essencia__title">Uma marca que nasceu da <em>paixão pelo tempo certo.</em></h2>
       </div>
       <div class="essencia__body">
         <p class="essencia__intro">Criamos pizzas artesanais congeladas para quem busca praticidade sem abrir mão do sabor verdadeiro.</p>
@@ -1136,6 +1129,8 @@
 
     <!-- ═══ 5b. EVENTOS ═══════════════════════════════════════ -->
     <section class="section eventos" id="eventos">
+      <div class="eventos__bg" aria-hidden="true"></div>
+      <div class="eventos__overlay" aria-hidden="true"></div>
       <div class="section__inner">
         <header class="eventos__head" data-reveal>
           <span class="eventos__live"><i></i>Ao vivo no seu evento</span>
