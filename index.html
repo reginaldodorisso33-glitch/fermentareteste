@@ -297,13 +297,17 @@
   ══════════════════════════════════════════════════════════ */
   .essencia{background:var(--olive-deep);color:var(--cream);padding:0;min-height:auto;display:block;
     position:relative}
-  .essencia::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;z-index:3;
-    background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--gold-2) 50%,var(--gold) 70%,transparent)}
-  .essencia__foto{display:none}
+  /* imagem de fundo suave */
   .essencia::before{content:"";position:absolute;inset:0;z-index:0;
     background-image:url("assets/img/institucional.webp");
-    background-size:cover;background-position:center 20%;
-    opacity:.18}
+    background-size:cover;background-position:center 20%;opacity:.12}
+  /* overlay escuro para legibilidade + linha dourada no topo */
+  .essencia::after{content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(to bottom,rgba(30,48,32,.92) 0%,rgba(30,48,32,.88) 100%)}
+  /* linha dourada no topo via box-shadow no primeiro filho */
+  .essencia__foto{display:none}
+  .essencia__gold-line{position:absolute;top:0;left:0;right:0;height:1px;z-index:3;
+    background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--gold-2) 50%,var(--gold) 70%,transparent)}
   .essencia__foto-content{position:relative;z-index:2;
     padding:clamp(2.4rem,6vw,4rem) clamp(20px,5vw,80px) clamp(1rem,3vw,1.6rem)}
   .essencia__foto-content .eyebrow{color:var(--gold-2);margin-bottom:.5rem}
@@ -488,7 +492,7 @@
     background-image:url("assets/img/revenda.webp");
     background-size:cover;background-position:center}
   .revenda::before{content:"";position:absolute;inset:0;z-index:0;
-    background:linear-gradient(155deg,rgba(30,48,32,.93) 0%,rgba(37,57,31,.85) 50%,rgba(26,46,28,.9) 100%)}
+    background:linear-gradient(155deg,rgba(30,48,32,.96) 0%,rgba(37,57,31,.92) 50%,rgba(26,46,28,.94) 100%)}
   .revenda__inner{position:relative;z-index:1;max-width:800px}
   .revenda__text{color:rgba(245,241,232,.78);font-size:clamp(1rem,2vw,1.12rem);
     max-width:50ch;margin-bottom:2rem;font-weight:300}
@@ -505,7 +509,7 @@
     background-image:url("assets/img/eventos.webp");
     background-size:cover;background-position:center 40%}
   .eventos::before{content:"";position:absolute;inset:0;z-index:0;
-    background:linear-gradient(rgba(13,13,13,.82),rgba(13,13,13,.88))}
+    background:linear-gradient(rgba(13,13,13,.88),rgba(13,13,13,.92))}
   .eventos__bg{display:none}
   .eventos__overlay{display:none}
   .eventos .section__inner{position:relative;z-index:1}
@@ -800,6 +804,7 @@
 
     <!-- ═══ 2. NOSSA ESSÊNCIA + QUEM SOMOS (fusão) ══════════════ -->
     <section class="essencia" id="manifesto">
+      <div class="essencia__gold-line" aria-hidden="true"></div>
       <div class="essencia__foto-content" data-reveal>
         <p class="eyebrow eyebrow--light">Nossa essência · Quem somos</p>
         <div class="rule rule--light" aria-hidden="true">
