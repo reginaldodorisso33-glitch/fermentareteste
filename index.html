@@ -166,21 +166,10 @@
   .back-top:hover{background:var(--leaf-2);transform:translateY(-3px)}
   .back-top svg{width:18px;height:18px}
 
-  /* ── SELOS (marquee) ─────────────────────────────────────── */
-  .trust-bar{position:relative;overflow:hidden;padding:.78rem 0;
-    background:var(--olive-deep);border-top:1px solid rgba(245,241,232,.08);border-bottom:1px solid rgba(245,241,232,.08)}
-  .trust-track{display:flex;width:max-content;animation:trustscroll 24s linear infinite}
-  .trust-bar:hover .trust-track{animation-play-state:paused}
-  .trust-group{display:flex;align-items:center;gap:clamp(1.3rem,3vw,2.2rem);padding-right:clamp(1.3rem,3vw,2.2rem)}
-  .trust-item{display:flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:500;
-    text-transform:uppercase;letter-spacing:.1em;color:rgba(245,241,232,.65);white-space:nowrap}
-  .trust-item svg{width:14px;height:14px;color:var(--gold-2);flex:none}
-  .trust-sep{font-size:.85rem;color:rgba(245,241,232,.2);flex:none;margin-right:clamp(1.3rem,3vw,2.2rem);font-weight:300}
-  .trust-bar::before,.trust-bar::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
-  .trust-bar::before{left:0;background:linear-gradient(to right,var(--olive-deep),transparent)}
-  .trust-bar::after{right:0;background:linear-gradient(to left,var(--olive-deep),transparent)}
-  @keyframes trustscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media(prefers-reduced-motion:reduce){.trust-track{animation:none}}
+  /* ── DIVISOR DOURADO ─────────────────────────────────────── */
+  .trust-bar{width:100%;height:1px;
+    background:linear-gradient(90deg,transparent 0%,var(--gold) 30%,var(--gold-2) 50%,var(--gold) 70%,transparent 100%);
+    border:none;padding:0;display:block}
 
   /* ══════════════════════════════════════════════════════════
      1. HERO
@@ -702,55 +691,8 @@
       <div class="hero__cue" aria-hidden="true"><span></span></div>
     </section>
 
-    <!-- TRUST BAR -->
-    <div class="trust-bar">
-      <div class="trust-track">
-        <div class="trust-group">
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Produção artesanal
-          </span>
-          <span class="trust-sep">·</span>
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/></svg>
-            Sem conservantes
-          </span>
-          <span class="trust-sep">·</span>
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            Pronta em minutos
-          </span>
-          <span class="trust-sep">·</span>
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/><path d="M9 13h6"/></svg>
-            Fermentação natural
-          </span>
-          <span class="trust-sep">·</span>
-        </div>
-        <div class="trust-group" aria-hidden="true">
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Produção artesanal
-          </span>
-          <span class="trust-sep">·</span>
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/></svg>
-            Sem conservantes
-          </span>
-          <span class="trust-sep">·</span>
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            Pronta em minutos
-          </span>
-          <span class="trust-sep">·</span>
-          <span class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/><path d="M9 13h6"/></svg>
-            Fermentação natural
-          </span>
-          <span class="trust-sep">·</span>
-        </div>
-      </div>
-    </div>
+    <!-- DIVISOR DOURADO -->
+    <div class="trust-bar" aria-hidden="true"></div>
 
     <!-- ═══ 2. NOSSA ESSÊNCIA + QUEM SOMOS (fusão) ══════════════ -->
     <section class="essencia" id="manifesto">
