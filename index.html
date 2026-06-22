@@ -484,10 +484,10 @@
   /* ══════════════════════════════════════════════════════════
      6. REVENDA
   ══════════════════════════════════════════════════════════ */
-  .revenda{position:relative;background:none;color:var(--cream)}
+  .revenda{position:relative;color:var(--cream);
+    background:url("assets/img/revenda.webp") center/cover no-repeat}
   .revenda::before{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(to bottom,rgba(18,28,18,.88) 0%,rgba(18,28,18,.85) 45%,rgba(18,28,18,.90) 100%),
-    url("assets/img/revenda.webp") center/cover}
+    background:rgba(18,28,18,.82)}
   .revenda__inner{position:relative;z-index:3;max-width:800px}
   .revenda__text{color:rgba(245,241,232,.78);font-size:clamp(1rem,2vw,1.12rem);
     max-width:50ch;margin-bottom:2rem;font-weight:300}
@@ -500,10 +500,10 @@
   /* ══════════════════════════════════════════════════════════
      6b. EVENTOS
   ══════════════════════════════════════════════════════════ */
-  .eventos{position:relative;overflow:hidden;background:none;color:var(--cream)}
+  .eventos{position:relative;overflow:hidden;color:var(--cream);
+    background:url("assets/img/eventos.webp") center 42%/cover no-repeat}
   .eventos::before{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(to bottom,rgba(10,10,10,.82) 0%,rgba(10,10,10,.78) 45%,rgba(10,10,10,.85) 100%),
-    url("assets/img/eventos.webp") center 42%/cover}
+    background:rgba(10,10,10,.78)}
   .eventos__bg{display:none}
   .eventos__overlay{display:none}
   .eventos .section__inner{position:relative;z-index:2}
