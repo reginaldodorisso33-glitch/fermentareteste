@@ -450,37 +450,43 @@
   .eventos__sub{color:rgba(245,241,232,.68);font-size:clamp(1rem,2vw,1.15rem);font-weight:300;margin-top:1rem;line-height:1.7}
   .eventos__text{text-align:center;max-width:62ch;margin:0 auto clamp(2.4rem,5vw,3.2rem);
     color:rgba(245,241,232,.6);font-size:.96rem;font-weight:300;line-height:1.75}
-  .event-types{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;max-width:780px;margin:0 auto clamp(2.6rem,5vw,3.4rem)}
-  @media(min-width:680px){.event-types{grid-template-columns:repeat(5,1fr)}}
-  .event-type{background:rgba(245,241,232,.05);border:1px solid rgba(245,241,232,.14);
-    border-radius:12px;padding:1.3rem 1rem;text-align:center;display:flex;flex-direction:column;
-    align-items:center;gap:.65rem;backdrop-filter:blur(6px);
-    transition:background .35s,border-color .35s,transform .35s var(--ease)}
-  .event-type:hover{background:rgba(245,241,232,.09);border-color:rgba(201,162,75,.4);transform:translateY(-4px)}
-  .event-type__ic{width:26px;height:26px;color:var(--gold-2)}
-  .event-type span{font-size:.78rem;font-weight:500;letter-spacing:.02em;color:rgba(245,241,232,.85)}
+  .event-types{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:780px;margin:0 auto clamp(2.6rem,5vw,3.4rem)}
+  @media(min-width:680px){.event-types{grid-template-columns:repeat(2,1fr)}}
+  .event-type{border-left:2px solid var(--gold);background:rgba(245,241,232,.05);
+    padding:16px 14px;display:flex;flex-direction:column;gap:8px;
+    transition:background .35s var(--ease);text-align:left}
+  .event-type:hover{background:rgba(245,241,232,.09)}
+  .event-type.event-type--wide{grid-column:span 2}
+  .event-type__ic{width:22px;height:22px;color:var(--gold-2)}
+  .event-type__rule{height:1px;width:20px;background:var(--gold)}
+  .event-type span{font-size:.78rem;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;color:#fff;font-family:var(--font-b)}
+  .event-type p{font-size:.7rem;color:rgba(245,241,232,.5);font-weight:300;line-height:1.5}
   .eventos__cta{display:flex;flex-direction:column;align-items:center;gap:1.1rem}
   .eventos__cta-note{font-size:.78rem;color:rgba(245,241,232,.42);letter-spacing:.04em;text-align:center}
 
   /* ══════════════════════════════════════════════════════════
      7. DIFERENCIAIS
   ══════════════════════════════════════════════════════════ */
-  .diferenciais{background:var(--cream)}
+  .diferenciais{background:var(--olive-deep)}
   .diferenciais::before{content:"";position:absolute;inset:0;
-    background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(79,107,67,.05),transparent 70%)}
-  .feature-grid{display:grid;grid-template-columns:1fr;
-    border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
-    box-shadow:0 4px 24px -12px rgba(17,17,17,.1)}
-  @media(min-width:620px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(min-width:980px){.feature-grid{grid-template-columns:repeat(3,1fr)}}
-  .feature{background:var(--cream);padding:clamp(1.6rem,3.5vw,2.4rem);
-    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-    transition:background .35s}
-  .feature:hover{background:var(--cream-2)}
-  .feature__ic{width:32px;height:32px;color:var(--olive);margin-bottom:.8rem}
-  .feature h3{font-size:1rem;margin-bottom:.45rem;color:var(--olive);
-    text-transform:uppercase;letter-spacing:.04em;font-family:var(--font-b);font-weight:600}
-  .feature p{font-size:.88rem;color:rgba(17,17,17,.62);font-weight:300}
+    background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(201,130,40,.1),transparent 65%)}
+  .diferenciais .section__inner{position:relative;z-index:1}
+  .diferenciais .eyebrow{color:var(--gold)}
+  .diferenciais .brand-title .ln:first-child{color:var(--gold-2)}
+  .diferenciais .brand-title .ln:last-child{color:#fff}
+  .diferenciais .rule__line,.diferenciais .rule__dots i{background:rgba(245,241,232,.4)}
+  .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:clamp(2rem,4vw,3rem)}
+  @media(min-width:1000px){.feature-grid{grid-template-columns:repeat(3,1fr)}}
+  .feature{border-left:2px solid var(--gold);background:rgba(245,241,232,.04);
+    padding:clamp(14px,3vw,20px);display:flex;flex-direction:column;gap:8px;
+    transition:background .35s var(--ease)}
+  .feature:hover{background:rgba(245,241,232,.07)}
+  .feature__ic{width:22px;height:22px;color:var(--gold-2)}
+  .feature__rule{height:1px;width:20px;background:var(--gold)}
+  .feature h3{font-size:.78rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.06em;color:#fff;line-height:1.2;font-family:var(--font-b)}
+  .feature p{font-size:.72rem;color:rgba(245,241,232,.55);font-weight:300;line-height:1.5}
 
   /* ══════════════════════════════════════════════════════════
      8. PROVA SOCIAL
@@ -1150,24 +1156,34 @@
 
         <div class="event-types" data-reveal>
           <div class="event-type">
-            <svg class="event-type__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21c4-3 7-6.5 7-10a7 7 0 0 0-14 0c0 3.5 3 7 7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            <svg class="event-type__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <div class="event-type__rule"></div>
             <span>Casamentos</span>
+            <p>Uma experiência gastronômica inesquecível para o dia mais especial.</p>
           </div>
           <div class="event-type">
             <svg class="event-type__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v4M8 6h8l2 4H6l2-4Z"/><path d="M5 10h14l-1.2 9.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 10Z"/></svg>
+            <div class="event-type__rule"></div>
             <span>Aniversários</span>
+            <p>Pizza artesanal ao vivo para celebrar com quem você ama.</p>
           </div>
           <div class="event-type">
             <svg class="event-type__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>
+            <div class="event-type__rule"></div>
             <span>Eventos corporativos</span>
+            <p>Diferencial gastronômico para reuniões, lançamentos e confraternizações.</p>
           </div>
           <div class="event-type">
             <svg class="event-type__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="17" cy="9" r="3"/><path d="M2 20c0-3 2.5-5 6-5s6 2 6 5M11 20c0-2.5 2-4.5 5-4.5s6 2 6 4.5"/></svg>
+            <div class="event-type__rule"></div>
             <span>Confraternizações</span>
+            <p>Descontração e sabor artesanal para aproximar equipes e amigos.</p>
           </div>
-          <div class="event-type">
+          <div class="event-type event-type--wide">
             <svg class="event-type__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/></svg>
+            <div class="event-type__rule"></div>
             <span>Eventos privados</span>
+            <p>Levamos toda a estrutura ao seu local. Pizza artesanal preparada ao vivo, do começo ao fim do evento.</p>
           </div>
         </div>
 
@@ -1209,48 +1225,53 @@
 
     <!-- ═══ 7. DIFERENCIAIS ═══════════════════════════════════ -->
     <section class="section diferenciais" id="diferenciais">
-
       <div class="section__inner">
         <header class="section__head" data-reveal>
           <p class="eyebrow eyebrow--center">Por que Fermentare</p>
-          <div class="rule rule--center" aria-hidden="true">
+          <div class="rule rule--center rule--light" aria-hidden="true">
             <span class="rule__line"></span>
             <span class="rule__dots"><i></i><i></i><i></i></span>
             <span class="rule__line"></span>
           </div>
           <h2 class="brand-title">
-            <span class="ln" style="color:var(--olive)">O que torna</span>
-            <span class="ln" style="color:var(--wine)">cada pizza diferente</span>
+            <span class="ln" style="color:var(--gold-2)">O que torna</span>
+            <span class="ln" style="color:#fff">cada pizza diferente</span>
           </h2>
         </header>
         <div class="feature-grid">
           <div class="feature" data-reveal>
             <svg class="feature__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3c-3 3-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-2-6-5-9Z"/></svg>
+            <div class="feature__rule"></div>
             <h3>Mais leve</h3>
             <p>A fermentação quebra o glúten, deixando a massa mais leve, macia e de fácil digestão.</p>
           </div>
           <div class="feature" data-reveal>
             <svg class="feature__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div class="feature__rule"></div>
             <h3>Mais digestiva</h3>
-            <p>A maturação longa de 48h respeita o tempo certo — tempo que faz a diferença.</p>
+            <p>Maturação longa de 48h respeita o tempo certo — tempo que faz a diferença.</p>
           </div>
           <div class="feature" data-reveal>
             <svg class="feature__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 21c2-6 4-9 7-9s5 3 7 9"/><path d="M12 12V3M9 6l3-3 3 3"/></svg>
-            <h3>Massa aerada e crocante</h3>
+            <div class="feature__rule"></div>
+            <h3>Aerada e crocante</h3>
             <p>Assada em alta temperatura, fica aerada por dentro e crocante por fora.</p>
           </div>
           <div class="feature" data-reveal>
             <svg class="feature__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <div class="feature__rule"></div>
             <h3>Ingredientes selecionados</h3>
             <p>Alta qualidade em cada ingrediente. Sabor que vem da escolha certa.</p>
           </div>
           <div class="feature" data-reveal>
             <svg class="feature__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M8 6V4m8 2V4"/></svg>
+            <div class="feature__rule"></div>
             <h3>Selada a vácuo</h3>
-            <p>Preserva o sabor, a crocância e a qualidade por até 3 meses congelada.</p>
+            <p>Preserva sabor, crocância e qualidade por até 3 meses congelada.</p>
           </div>
           <div class="feature" data-reveal>
             <svg class="feature__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="feature__rule"></div>
             <h3>Sem aditivos</h3>
             <p>Só tempo e ingredientes de verdade. Feita com cuidado em cada detalhe.</p>
           </div>
