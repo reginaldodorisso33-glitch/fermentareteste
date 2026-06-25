@@ -442,48 +442,56 @@
   .flavor--wide .flavor__right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
 
   /* ══════════════════════════════════════════════════════════
-     5. PREPARO (nova seção)
+     5. PREPARO
   ══════════════════════════════════════════════════════════ */
-  .preparo{background:var(--cream-3)}
-  .preparo::before{content:"";position:absolute;inset:0;
-    background:radial-gradient(ellipse 55% 45% at 50% 50%,rgba(201,162,75,.07),transparent 70%)}
+  .preparo{background:var(--cream-2)}
+  .preparo::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 0%,rgba(46,74,50,.06),transparent 60%),
+      radial-gradient(ellipse 50% 40% at 50% 100%,rgba(201,162,75,.05),transparent 60%)}
   .preparo .section__inner{position:relative;z-index:1}
-  .prep-hero-img{width:100%;aspect-ratio:16/8;border-radius:var(--r);overflow:hidden;
-    margin-top:clamp(1.6rem,3vw,2.4rem);box-shadow:var(--shadow-card);
-    background-image:url("assets/img/preparo.webp");background-size:cover;background-position:center 40%}
-  .prep-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(.8rem,2vw,1.2rem);margin-top:clamp(2rem,4vw,3rem)}
-  @media(min-width:900px){.prep-steps{grid-template-columns:repeat(4,1fr)}}
 
-  /* flip card */
-  .prep-step{height:180px;perspective:800px;cursor:pointer;border-radius:var(--r)}
-  @media(min-width:560px){.prep-step{height:200px}}
-  .prep-step__inner{position:relative;width:100%;height:100%;
-    transform-style:preserve-3d;transition:transform .55s var(--ease)}
-  .prep-step.is-flipped .prep-step__inner{transform:rotateY(180deg)}
-  .prep-step__front,.prep-step__back{position:absolute;inset:0;
-    border-radius:var(--r);padding:clamp(1rem,3vw,1.6rem);
-    backface-visibility:hidden;-webkit-backface-visibility:hidden;
-    display:flex;flex-direction:column;justify-content:center;gap:.6rem;
-    border:1px solid var(--line);overflow:hidden}
-  .prep-step__front{background:var(--cream);
-    border-top:3px solid var(--olive)}
-  .prep-step__front::before{content:"";position:absolute;bottom:-20px;right:-20px;
-    width:80px;height:80px;border-radius:50%;
-    background:rgba(46,74,50,.06)}
-  .prep-step__back{background:var(--olive);color:var(--cream);
-    transform:rotateY(180deg);border-color:var(--olive);
-    justify-content:center;text-align:center}
-  .prep-step__num{font-family:var(--font-d);font-size:2rem;font-weight:300;
-    color:rgba(46,74,50,.12);line-height:1;letter-spacing:-.02em;position:absolute;top:.8rem;right:1rem}
-  .prep-step__ic{width:32px;height:32px;color:var(--olive);flex:none}
-  .prep-step__front h3{font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--olive);font-family:var(--font-b);font-weight:700;line-height:1.2}
-  .prep-step__back p{font-size:.88rem;color:rgba(245,241,232,.9);font-weight:300;line-height:1.55}
-  .prep-step__back svg{width:28px;height:28px;color:var(--gold-2);margin:0 auto .4rem}
-  .prep-step__hint{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;
-    color:rgba(46,74,50,.4);margin-top:auto;display:flex;align-items:center;gap:.3rem}
-  .prep-step__hint svg{width:10px;height:10px}
-  .prep-note{text-align:center;margin-top:2.4rem}
+  /* imagem premium */
+  .prep-hero-img{width:100%;aspect-ratio:16/7;border-radius:20px;overflow:hidden;
+    margin-top:clamp(1.4rem,3vw,2rem);margin-bottom:clamp(2rem,4vw,3rem);
+    box-shadow:0 24px 64px -24px rgba(17,17,17,.28),0 0 0 1px rgba(201,162,75,.18);
+    background-image:url("assets/img/preparo.webp");
+    background-size:cover;background-position:center 40%;position:relative}
+  .prep-hero-img::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,transparent 55%,rgba(17,17,17,.18));
+    border-radius:20px}
+
+  /* timeline vertical */
+  .prep-steps{display:flex;flex-direction:column;gap:0;margin-top:0;position:relative}
+  .prep-steps::before{content:"";position:absolute;left:19px;top:24px;bottom:24px;width:1px;
+    background:linear-gradient(to bottom,transparent,var(--gold) 10%,var(--gold) 90%,transparent);
+    opacity:.3}
+
+  /* step */
+  .prep-step{display:flex;gap:clamp(1rem,4vw,1.6rem);align-items:flex-start;
+    padding:clamp(1.2rem,3vw,1.6rem) 0;
+    border-bottom:1px solid rgba(17,17,17,.07);position:relative;cursor:default}
+  .prep-step:last-child{border-bottom:none}
+  .prep-step__inner{display:contents}
+  .prep-step__front,.prep-step__back{display:contents}
+
+  /* marcador circular */
+  .prep-step__marker{flex:none;width:40px;height:40px;border-radius:50%;
+    background:var(--olive);display:grid;place-items:center;
+    box-shadow:0 4px 16px -6px rgba(46,74,50,.45);position:relative;z-index:1}
+  .prep-step__ic{width:18px;height:18px;color:var(--gold-2)}
+
+  /* conteúdo */
+  .prep-step__content{flex:1;padding-top:.25rem}
+  .prep-step__num{font-family:var(--font-d);font-size:.68rem;font-weight:400;
+    letter-spacing:.16em;color:var(--gold);display:block;margin-bottom:.2rem}
+  .prep-step__front h3{font-family:var(--font-b);font-size:.95rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;color:var(--olive);
+    line-height:1.2;margin-bottom:.3rem}
+  .prep-step__back p{font-size:.88rem;color:rgba(17,17,17,.58);
+    font-weight:300;line-height:1.6}
+  .prep-step__hint{display:none}
+  .prep-note{text-align:center;margin-top:clamp(2rem,4vw,2.8rem)}
 
   /* ══════════════════════════════════════════════════════════
      6. REVENDA
@@ -1070,7 +1078,7 @@
       </div>
     </section>
 
-    <!-- ═══ 5. PREPARO (nova seção) ══════════════════════════ -->
+    <!-- ═══ 5. PREPARO ══════════════════════════════════════════ -->
     <section class="section preparo" id="preparo">
       <div class="section__inner">
         <header class="section__head" data-reveal>
@@ -1084,7 +1092,7 @@
             <span class="ln" style="color:var(--olive)">Do freezer ao forno</span>
             <span class="ln" style="color:var(--wine)">em minutos</span>
           </h2>
-          <p style="margin-top:1rem;color:rgba(17,17,17,.6);font-size:.97rem;font-weight:300;max-width:42ch;margin-inline:auto">
+          <p style="margin-top:1rem;color:rgba(17,17,17,.55);font-size:.95rem;font-weight:300;max-width:40ch;margin-inline:auto;font-style:italic">
             Sem complicação. Sem descongelar. Do freezer direto para o calor.
           </p>
         </header>
@@ -1093,56 +1101,64 @@
           <li class="prep-step" data-reveal>
             <div class="prep-step__inner">
               <div class="prep-step__front">
-                <span class="prep-step__num">01</span>
-                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><path d="M5 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2"/></svg>
-                <h3>Retire do freezer</h3>
-                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+                <div class="prep-step__marker">
+                  <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><path d="M5 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2"/></svg>
+                </div>
               </div>
               <div class="prep-step__back">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><path d="M5 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2"/></svg>
-                <p>Sem precisar descongelar. A pizza vai direto para o calor.</p>
+                <div class="prep-step__content">
+                  <span class="prep-step__num">01</span>
+                  <h3>Retire do freezer</h3>
+                  <p>Sem precisar descongelar. A pizza vai direto para o calor.</p>
+                </div>
               </div>
             </div>
           </li>
           <li class="prep-step" data-reveal>
             <div class="prep-step__inner">
               <div class="prep-step__front">
-                <span class="prep-step__num">02</span>
-                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M6 6V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/><path d="M12 11v4m-2-2h4"/></svg>
-                <h3>Pré-aqueça</h3>
-                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+                <div class="prep-step__marker">
+                  <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M6 6V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/><path d="M12 11v4m-2-2h4"/></svg>
+                </div>
               </div>
               <div class="prep-step__back">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M6 6V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2"/><path d="M12 11v4m-2-2h4"/></svg>
-                <p>Forno a 220°C ou air fryer a 180°C por 5 minutos antes de entrar.</p>
+                <div class="prep-step__content">
+                  <span class="prep-step__num">02</span>
+                  <h3>Pré-aqueça o forno</h3>
+                  <p>Forno a 220°C ou air fryer a 180°C por 5 minutos antes de entrar.</p>
+                </div>
               </div>
             </div>
           </li>
           <li class="prep-step" data-reveal>
             <div class="prep-step__inner">
               <div class="prep-step__front">
-                <span class="prep-step__num">03</span>
-                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <h3>Asse por 7–10 min</h3>
-                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+                <div class="prep-step__marker">
+                  <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </div>
               </div>
               <div class="prep-step__back">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <p>Até a borda ficar dourada e o queijo borbulhando.</p>
+                <div class="prep-step__content">
+                  <span class="prep-step__num">03</span>
+                  <h3>Asse por 7–10 minutos</h3>
+                  <p>Até a borda ficar dourada e o queijo borbulhando.</p>
+                </div>
               </div>
             </div>
           </li>
           <li class="prep-step" data-reveal>
             <div class="prep-step__inner">
               <div class="prep-step__front">
-                <span class="prep-step__num">04</span>
-                <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/><path d="M8.5 14.5S10 16 12 16s3.5-1.5 3.5-1.5"/></svg>
-                <h3>Sirva e aproveite</h3>
-                <span class="prep-step__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>toque para ver mais</span>
+                <div class="prep-step__marker">
+                  <svg class="prep-step__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/><path d="M8.5 14.5S10 16 12 16s3.5-1.5 3.5-1.5"/></svg>
+                </div>
               </div>
               <div class="prep-step__back">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/><path d="M8.5 14.5S10 16 12 16s3.5-1.5 3.5-1.5"/></svg>
-                <p>Pizza artesanal pronta, crocante e cheia de sabor.</p>
+                <div class="prep-step__content">
+                  <span class="prep-step__num">04</span>
+                  <h3>Sirva e aproveite</h3>
+                  <p>Pizza artesanal pronta, crocante e cheia de sabor.</p>
+                </div>
               </div>
             </div>
           </li>
