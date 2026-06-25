@@ -218,23 +218,24 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='turbulence' baseFrequency='.45' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E")}
   .hero__overlay{position:absolute;inset:0;z-index:1;
     background:linear-gradient(to top,
-      rgba(30,48,32,.85) 0%,
-      rgba(30,48,32,.45) 40%,
-      rgba(30,48,32,.25) 70%,
-      rgba(30,48,32,.15) 100%)}
+      rgba(8,8,8,.78) 0%,
+      rgba(8,8,8,.55) 40%,
+      rgba(8,8,8,.38) 70%,
+      rgba(8,8,8,.22) 100%)}
   .hero__inner{position:relative;z-index:2;color:var(--cream);
     text-align:center;display:flex;flex-direction:column;align-items:center;max-width:640px}
 
   /* entradas escalonadas */
   .hero .eyebrow{animation:heroFadeIn .8s var(--ease) .1s both}
   .hero__title{font-size:clamp(2.4rem,8vw,4.8rem);letter-spacing:-.02em;margin-bottom:.5rem;
-    font-weight:500;line-height:1.02;animation:heroFadeUp .9s var(--ease) .25s both}
+    font-weight:500;line-height:1.02;animation:heroFadeUp .9s var(--ease) .25s both;
+    text-shadow:0 3px 20px rgba(0,0,0,.45)}
   .hero__title em{font-style:italic;color:var(--gold-2);font-weight:300;display:block}
   .hero__rule{display:flex;align-items:center;gap:.55rem;justify-content:center;margin:.7rem 0 1.1rem;
     animation:heroFadeIn .8s var(--ease) .2s both}
   .hero__rule span{height:1.5px;width:clamp(28px,5vw,48px);background:var(--wine)}
   .hero__rule i{width:7px;height:7px;background:var(--wine);transform:rotate(45deg);display:block}
-  .hero__sub{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,241,232,.78);max-width:32ch;
+  .hero__sub{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(255,255,255,.82);max-width:32ch;
     margin-bottom:1.8rem;font-weight:300;line-height:1.65;text-align:center;
     animation:heroFadeUp .9s var(--ease) .4s both}
 
@@ -266,7 +267,7 @@
   .hero__badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;
     animation:heroFadeIn 1s var(--ease) .8s both}
   .hero__badge{display:flex;align-items:center;gap:.35rem;font-size:.65rem;font-weight:600;
-    letter-spacing:.08em;text-transform:uppercase;color:rgba(245,241,232,.65);
+    letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.76);
     background:rgba(245,241,232,.07);border:1px solid rgba(245,241,232,.12);
     padding:.35rem .75rem;border-radius:999px}
   .hero__badge svg{width:10px;height:10px;color:var(--gold-2)}
