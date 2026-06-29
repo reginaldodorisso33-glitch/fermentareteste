@@ -448,7 +448,7 @@
   .prep-hero-img{width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;
     margin-top:clamp(1.4rem,3vw,2rem);margin-bottom:clamp(2rem,4vw,3rem);
     box-shadow:0 24px 64px -24px rgba(17,17,17,.4);
-    background-image:url("assets/img/preparo.webp");
+    background-color:var(--olive-deep);
     background-size:cover;background-position:center 42%;position:relative}
   .prep-hero-img::after{content:"";position:absolute;inset:0;z-index:1;
     background:linear-gradient(to top,rgba(15,22,14,.92) 0%,rgba(15,22,14,.42) 45%,transparent 75%)}
@@ -497,7 +497,7 @@
      6. REVENDA
   ══════════════════════════════════════════════════════════ */
   .revenda{position:relative;color:var(--cream);
-    background:url("assets/img/revenda.webp") center/cover no-repeat}
+    background-color:var(--olive-deep);background-size:cover;background-position:center}
   .revenda::before{content:"";position:absolute;inset:0;z-index:1;
     background:linear-gradient(135deg,rgba(60,16,16,.86) 0%,rgba(18,28,18,.84) 60%,rgba(18,28,18,.86) 100%)}
   .revenda__inner{position:relative;z-index:3;max-width:800px}
@@ -513,7 +513,7 @@
      6b. EVENTOS
   ══════════════════════════════════════════════════════════ */
   .eventos{position:relative;overflow:hidden;color:var(--cream);
-    background:url("assets/img/eventos.webp") center 42%/cover no-repeat}
+    background-color:var(--olive-deep);background-size:cover;background-position:center 42%}
   .eventos::before{content:"";position:absolute;inset:0;z-index:1;
     background:rgba(18,28,18,.82)}
   .eventos__bg{display:none}
@@ -811,9 +811,20 @@
     box-shadow:none;cursor:not-allowed;transform:none}
   .cart-checkout svg{width:20px;height:20px;flex:none}
   .cart-note{text-align:center;font-size:.72rem;color:rgba(17,17,17,.4);margin-top:.7rem}
+  .cart-clear{display:none;margin:.6rem auto 0;background:none;border:none;cursor:pointer;
+    font-family:var(--font-b);font-size:.74rem;color:rgba(158,43,43,.7);
+    text-decoration:underline;text-underline-offset:2px;transition:color .2s}
+  .cart-clear:hover{color:var(--wine)}
+  .cart-clear.is-visible{display:block}
   @media(prefers-reduced-motion:reduce){
     .cart-panel,.cart-fab,.cart-backdrop{transition:none}
   }
+  /* ── Lazy background: fade suave ao carregar ── */
+  .lazy-bg{transition:background-image .1s,opacity .5s var(--ease)}
+  .lazy-bg::before,.lazy-bg::after{transition:opacity .5s var(--ease)}
+  .step__img.lazy-bg:not(.img-loaded){background-color:var(--olive-deep)}
+  .lazy-bg.img-loaded{animation:bgFade .6s var(--ease)}
+  @keyframes bgFade{from{opacity:.6}to{opacity:1}}
   </style>
 </head>
 <body>
@@ -857,11 +868,11 @@
       </span>
     </a>
     <nav class="nav__links" aria-label="Navegação principal">
-      <a href="#manifesto">Nossa essência</a>
-      <a href="#processo">Processo</a>
       <a href="#sabores">Sabores</a>
+      <a href="#preparo">Como preparar</a>
       <a href="#eventos">Eventos</a>
       <a href="#revenda">Revenda</a>
+      <a href="#manifesto">Nossa essência</a>
     </nav>
     <a class="btn btn--small btn--solid" href="#cta">Fazer pedido</a>
     <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
@@ -871,11 +882,11 @@
 
   <!-- MENU MOBILE -->
   <div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
-    <a href="#manifesto">Nossa essência</a>
-    <a href="#processo">Processo</a>
     <a href="#sabores">Sabores</a>
+    <a href="#preparo">Como preparar</a>
     <a href="#eventos">Eventos</a>
     <a href="#revenda">Revenda</a>
+    <a href="#manifesto">Nossa essência</a>
     <a class="btn btn--solid" href="#cta">Fazer pedido</a>
   </div>
 
@@ -910,6 +921,7 @@
         Fazer pedido no WhatsApp
       </button>
       <p class="cart-note">Você confirma os detalhes e o pagamento pelo WhatsApp.</p>
+      <button class="cart-clear" id="cartClear" type="button">Limpar carrinho</button>
     </div>
   </aside>
 
@@ -931,9 +943,9 @@
           Pré-assadas em forno de alta temperatura, prontas em 7 a 10 minutos no forno ou air fryer.
         </p>
         <div class="hero__actions">
-          <a class="btn--hero-primary" href="https://wa.me/5516994324810?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.493a.5.5 0 0 0 .613.635l5.78-1.517A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.089-1.395l-.361-.214-3.737.98.998-3.648-.235-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            Fazer pedido no WhatsApp
+          <a class="btn--hero-primary" href="#sabores">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18M3 11a9 9 0 0 1 18 0M3 11l9 10 9-10"/><circle cx="9" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="7.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Ver sabores e pedir
           </a>
           <a class="btn--hero-secondary" href="#revenda">Seja um parceiro revendedor</a>
         </div>
@@ -1030,7 +1042,7 @@
         </header>
         <ol class="steps">
           <li class="step" data-reveal>
-            <div class="step__img" style="background-image:url('assets/img/processo-massa.webp')" aria-hidden="true"></div>
+            <div class="step__img lazy-bg" data-bg="assets/img/processo-massa.webp" aria-hidden="true"></div>
             <div class="step__body">
               <div class="step__top">
                 <span class="step__num">01</span>
@@ -1044,7 +1056,7 @@
             </div>
           </li>
           <li class="step" data-reveal>
-            <div class="step__img" style="background-image:url('assets/img/processo-forno.webp')" aria-hidden="true"></div>
+            <div class="step__img lazy-bg" data-bg="assets/img/processo-forno.webp" aria-hidden="true"></div>
             <div class="step__body">
               <div class="step__top">
                 <span class="step__num">02</span>
@@ -1058,7 +1070,7 @@
             </div>
           </li>
           <li class="step" data-reveal>
-            <div class="step__img" style="background-image:url('assets/img/processo-selagem.webp')" aria-hidden="true"></div>
+            <div class="step__img lazy-bg" data-bg="assets/img/processo-selagem.webp" aria-hidden="true"></div>
             <div class="step__body">
               <div class="step__top">
                 <span class="step__num">03</span>
@@ -1072,7 +1084,7 @@
             </div>
           </li>
           <li class="step" data-reveal>
-            <div class="step__img" style="background-image:url('assets/img/processo-congelada.webp')" aria-hidden="true"></div>
+            <div class="step__img lazy-bg" data-bg="assets/img/processo-congelada.webp" aria-hidden="true"></div>
             <div class="step__body">
               <div class="step__top">
                 <span class="step__num">04</span>
@@ -1236,7 +1248,7 @@
             Sem complicação. Sem descongelar. Do freezer direto para o calor.
           </p>
         </header>
-        <div class="prep-hero-img" data-reveal-scale>
+        <div class="prep-hero-img lazy-bg" data-bg="assets/img/preparo.webp" data-reveal-scale>
           <div class="prep-hero-img__txt">
             <span class="prep-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Pronta em 7–10 min</span>
             <h3>Do freezer ao forno</h3>
@@ -1319,7 +1331,7 @@
     </section>
 
     <!-- ═══ 5b. EVENTOS ═══════════════════════════════════════ -->
-    <section class="section eventos" id="eventos">
+    <section class="section eventos lazy-bg" id="eventos" data-bg="assets/img/eventos.webp">
       <div class="eventos__bg" aria-hidden="true"></div>
       <div class="eventos__overlay" aria-hidden="true"></div>
       <div class="section__inner">
@@ -1362,14 +1374,14 @@
           </div>
         </div>
         <div class="eventos__cta" data-reveal>
-          <a class="btn btn--wine" href="https://wa.me/5516994324810?text=Ol%C3%A1!%20Quero%20contratar%20a%20Fermentare%20para%20um%20evento." rel="noopener">Quero contratar para evento</a>
+          <a class="btn btn--wine" href="https://wa.me/5516994324810?text=Ol%C3%A1!%20Vi%20no%20site%20que%20a%20Fermentare%20atende%20eventos%20e%20gostaria%20de%20saber%20mais%20sobre%20como%20funciona." rel="noopener">Quero contratar para evento</a>
           <p class="eventos__cta-note">Disponibilidade sujeita à agenda e à região de atendimento.</p>
         </div>
       </div>
     </section>
 
     <!-- ═══ 6. REVENDA ════════════════════════════════════════ -->
-    <section class="section revenda" id="revenda">
+    <section class="section revenda lazy-bg" id="revenda" data-bg="assets/img/revenda.webp">
       <div class="section__inner revenda__inner" data-reveal>
         <div class="content-card">
         <p class="eyebrow eyebrow--light">Para o seu negócio</p>
@@ -1394,7 +1406,7 @@
           <li>Produto premium</li>
           <li>Validade prolongada — até 3 meses</li>
         </ul>
-        <a class="btn btn--wine" href="https://wa.me/5516994324810?text=Ol%C3%A1!%20Tenho%20interesse%20em%20revender%20as%20pizzas%20Fermentare." rel="noopener">Quero revender</a>
+        <a class="btn btn--wine" href="https://wa.me/5516994324810?text=Ol%C3%A1!%20Tenho%20interesse%20em%20revender%20as%20pizzas%20Fermentare%20e%20gostaria%20de%20saber%20mais%20sobre%20como%20funciona." rel="noopener">Quero revender</a>
         </div>
       </div>
     </section>
@@ -1678,7 +1690,38 @@
   // ═══ CARRINHO ═══════════════════════════════════════════
   (function(){
     var WA_NUMBER = "5516994324810";
+    var STORAGE_KEY = "fermentare_cart_v1";
+    var EXPIRY_MS = 60 * 60 * 1000; // 1 hora
     var cart = {}; // { "Marguerita": {price:39.9, qty:2}, ... }
+
+    function saveCart(){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          items: cart,
+          savedAt: Date.now()
+        }));
+      }catch(e){}
+    }
+    function loadCart(){
+      try{
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if(!raw) return;
+        var data = JSON.parse(raw);
+        // carrinho expirado: descarta
+        if(!data || !data.savedAt || (Date.now() - data.savedAt) > EXPIRY_MS){
+          localStorage.removeItem(STORAGE_KEY);
+          return;
+        }
+        var items = data.items;
+        if(items && typeof items === "object"){
+          for(var k in items){
+            if(items[k] && typeof items[k].price === "number" && items[k].qty > 0){
+              cart[k] = {price:items[k].price, qty:items[k].qty};
+            }
+          }
+        }
+      }catch(e){}
+    }
 
     var fab      = document.getElementById("cartFab");
     var countEl  = document.getElementById("cartCount");
@@ -1688,6 +1731,7 @@
     var itemsEl  = document.getElementById("cartItems");
     var totalEl  = document.getElementById("cartTotal");
     var checkout = document.getElementById("cartCheckout");
+    var clearBtn = document.getElementById("cartClear");
 
     if(!fab||!panel) return;
 
@@ -1702,11 +1746,13 @@
     }
 
     function render(){
+      saveCart();
       var qty = totalQty();
       countEl.textContent = qty;
       fab.classList.toggle("is-visible", qty>0);
       totalEl.textContent = brl(totalPrice());
       checkout.disabled = qty===0;
+      if(clearBtn) clearBtn.classList.toggle("is-visible", qty>0);
 
       var names = Object.keys(cart);
       if(names.length===0){
@@ -1805,7 +1851,55 @@
       window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank", "noopener");
     });
 
+    if(clearBtn){
+      clearBtn.addEventListener("click", function(){
+        if(Object.keys(cart).length === 0) return;
+        if(confirm("Limpar todos os itens do carrinho?")){
+          cart = {};
+          render();
+        }
+      });
+    }
+
+    loadCart();
     render();
+  })();
+  // ═══ LAZY LOADING de imagens de fundo ═══════════════════
+  (function(){
+    var els = document.querySelectorAll(".lazy-bg[data-bg]");
+    if(!els.length) return;
+
+    function load(el){
+      var url = el.getAttribute("data-bg");
+      if(!url) return;
+      // pré-carrega para só mostrar quando estiver pronta (sem flash)
+      var img = new Image();
+      img.onload = function(){
+        el.style.backgroundImage = "url('" + url + "')";
+        el.classList.add("img-loaded");
+        el.removeAttribute("data-bg");
+      };
+      img.onerror = function(){
+        // se falhar, aplica direto de qualquer forma
+        el.style.backgroundImage = "url('" + url + "')";
+        el.removeAttribute("data-bg");
+      };
+      img.src = url;
+    }
+
+    if(!("IntersectionObserver" in window)){
+      els.forEach(load); // navegador antigo: carrega tudo
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          load(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    },{rootMargin:"300px 0px"}); // começa a carregar 300px antes de aparecer
+    els.forEach(function(el){ io.observe(el); });
   })();
   </script>
 </body>
