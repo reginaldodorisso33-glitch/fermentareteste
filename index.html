@@ -715,10 +715,7 @@
     border:1px solid rgba(201,162,75,.4);
     box-shadow:0 6px 20px -8px rgba(0,0,0,.5)}
   .prep-badge svg{width:14px;height:14px;color:var(--gold-2);flex:none}
-  /* ── Logo animado na intro ── */
-  .intro__logo{width:clamp(76px,18vw,110px);height:auto;margin:0 auto .4rem;
-    animation:introLogoDraw .9s var(--ease) both}
-  @keyframes introLogoDraw{from{opacity:0;transform:scale(.82) rotate(-4deg)}to{opacity:1;transform:none}}
+  /* ── Texto da intro ── */
   .intro__welcome{font-family:var(--font-d)!important;font-style:italic;text-transform:none!important;
     letter-spacing:.04em!important;font-size:clamp(1.3rem,5vw,1.8rem)!important;color:var(--olive)!important}
   .intro__welcome::before,.intro__welcome::after{display:none}
@@ -811,7 +808,6 @@
   <!-- INTRO SPLASH -->
   <div class="intro" id="intro" aria-live="polite" role="status">
     <div class="intro__text" id="introText">
-      <svg class="intro__logo" viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg>
       <p class="intro__welcome">Fermentare</p>
       <div class="intro__rule">
         <span></span>
