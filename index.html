@@ -104,27 +104,24 @@
   .btn--flavor:hover{background:var(--wine-deep);transform:translateY(-1px)}
   .btn:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
 
-  /* ── LOGO ────────────────────────────────────────────────── */
-  .logo{display:flex;align-items:center;gap:.55rem}
-  .logo__mark{width:40px;height:40px;flex:none;object-fit:contain;
-    border-radius:50%;background:rgba(201,162,75,.1);border:1px solid rgba(201,162,75,.2);padding:3px}
+  /* ── LOGO / NOME TIPOGRÁFICO ─────────────────────────────── */
+  .logo{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+  .logo__mark{display:none}
   .logo__txt{display:flex;flex-direction:column;line-height:1}
-  .logo__name{font-family:var(--font-d);font-weight:500;font-size:1rem;
-    color:var(--cream);letter-spacing:.04em}
-  .logo__sub{font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--gold-2);margin-top:2px;font-family:var(--font-b)}
+  .logo__name{font-family:var(--font-d);font-weight:500;font-size:1.2rem;
+    color:var(--cream);letter-spacing:.08em;text-transform:uppercase}
+  .logo__sub{font-size:.42rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-2);margin-top:3px;font-family:var(--font-b)}
 
   /* ── NAV ─────────────────────────────────────────────────── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
-    justify-content:space-between;gap:1rem;padding:.65rem clamp(20px,5vw,80px);
+    justify-content:space-between;gap:1rem;padding:.7rem clamp(20px,5vw,80px);
     background:rgba(30,48,32,.96);backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(201,162,75,.18);
+    border-bottom:1px solid rgba(201,162,75,.15);
     transform:translateY(0);transition:transform .35s var(--ease)}
   .nav::after{content:"";position:absolute;bottom:0;left:8%;right:8%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
   .nav.is-hidden{transform:translateY(-110%)}
-  .nav .logo__name{color:var(--cream)}
-  .nav .logo__sub{color:var(--gold-2)}
   .nav__links{display:none;gap:2rem;font-size:.88rem}
   .nav__links a{color:rgba(245,241,232,.75);transition:color .3s;position:relative;letter-spacing:.01em}
   .nav__links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;
@@ -739,10 +736,9 @@
   <!-- NAV -->
   <header class="nav" id="nav">
     <a class="logo" href="#hero" aria-label="Fermentare Pizzas">
-      <img class="logo__mark" src="assets/img/logo.webp" alt="Fermentare Pizzas logo" width="48" height="48"/>
       <span class="logo__txt">
         <span class="logo__name">Fermentare</span>
-        <span class="logo__sub">Pizzas</span>
+        <span class="logo__sub">Pizzas · Fermentação natural</span>
       </span>
     </a>
     <nav class="nav__links" aria-label="Navegação principal">
