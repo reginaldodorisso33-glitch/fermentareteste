@@ -103,6 +103,20 @@
   .btn--flavor{background:var(--wine);color:var(--cream);font-size:.82rem;padding:.65rem 1.3rem;box-shadow:none}
   .btn--flavor:hover{background:var(--wine-deep);transform:translateY(-1px)}
   .btn:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+  /* microinteração: pressão ao clicar */
+  .btn:active,.btn--hero-primary:active,.btn--hero-secondary:active,
+  .btn--add:active,.cart-checkout:active,.cart-fab:active{
+    transform:scale(.96);transition:transform .08s ease-out}
+  /* brilho discreto e lento que cruza os botões principais */
+  .btn--hero-primary,.cart-checkout{position:relative;overflow:hidden}
+  .btn--hero-primary::after,.cart-checkout::after{content:"";position:absolute;
+    top:0;left:-60%;width:40%;height:100%;pointer-events:none;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:skewX(-18deg);
+    animation:btnSheen 6s ease-in-out infinite}
+  @keyframes btnSheen{
+    0%{left:-60%}
+    18%,100%{left:140%}}
 
   /* ── LOGO — oculto na opção 2 ───────────────────────────── */
   .logo{display:none}
@@ -203,7 +217,12 @@
       radial-gradient(ellipse 90% 60% at 50% 110%, rgba(158,43,43,.12) 0%, transparent 55%),
       linear-gradient(148deg, rgba(46,74,50,.28) 0%, rgba(61,92,54,.18) 30%, rgba(42,64,48,.28) 60%, rgba(30,48,32,.45) 100%),
       url("assets/img/hero.webp");
-    background-size:cover;background-position:center 35%}
+    background-size:cover;background-position:center 35%;
+    will-change:transform;transform:scale(1.04);
+    animation:kenBurns 28s ease-in-out infinite alternate}
+  @keyframes kenBurns{
+    0%{transform:scale(1.04) translate(0,0)}
+    100%{transform:scale(1.10) translate(-1.2%,-1.4%)}}
   .hero__bg::before{content:"";position:absolute;inset:0;
     background:radial-gradient(ellipse 55% 45% at 72% 18%, rgba(220,150,50,.28), transparent 65%);
     mix-blend-mode:screen}
@@ -395,13 +414,19 @@
   .flavor-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
   @media(min-width:900px){.flavor-grid{grid-template-columns:repeat(4,1fr)}}
 
-  .flavor{position:relative;overflow:hidden;aspect-ratio:3/4;border-left:2px solid var(--gold)}
+  .flavor{position:relative;overflow:hidden;aspect-ratio:3/4;border-left:2px solid var(--gold);
+    transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+    will-change:transform}
   .flavor.flavor--wide{grid-column:span 2;aspect-ratio:2/1}
   @media(min-width:900px){.flavor.flavor--wide{grid-column:span 1;aspect-ratio:3/4}}
+  @media(hover:hover){
+    .flavor:hover{transform:translateY(-6px);
+      box-shadow:0 22px 48px -22px rgba(17,17,17,.55),0 0 0 1px rgba(201,162,75,.25)}
+  }
 
   .flavor__bg{position:absolute;inset:0;background-size:cover;background-position:center;
     transition:transform .65s var(--ease)}
-  .flavor:hover .flavor__bg{transform:scale(1.05)}
+  .flavor:hover .flavor__bg{transform:scale(1.06)}
   .flavor__bg--marguerita{background-image:url("assets/img/sabores-marguerita.webp")}
   .flavor__bg--frango{background-image:url("assets/img/sabores-frango.webp")}
   .flavor__bg--queijos{background-image:url("assets/img/sabores-queijos.webp")}
@@ -663,6 +688,15 @@
   @media(prefers-reduced-motion:reduce){
     [data-reveal],[data-reveal-scale]{opacity:1!important;transform:none!important;transition:none}
     .hero__cue span{animation:none}.btn,.flavor,.prep-step{transition:none}
+    /* desliga as microinterações animadas para quem pede menos movimento */
+    .hero__bg{animation:none!important;transform:none!important}
+    .btn--hero-primary::after,.cart-checkout::after{display:none!important}
+    .btn--hero-primary{animation:none!important}
+    .cart-fab.is-bounce,.cart-fab__count.is-pulse,.btn--add.is-added{animation:none!important}
+    .flavor:hover{transform:none!important;box-shadow:none!important}
+    .flavor:hover .flavor__bg{transform:none!important}
+    .btn:active,.btn--add:active,.cart-checkout:active,.cart-fab:active,
+    .btn--hero-primary:active,.btn--hero-secondary:active{transform:none!important}
   }
   /* ── INTRO SPLASH ────────────────────────────────────────── */
   .intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;
@@ -750,11 +784,22 @@
     opacity:0;visibility:hidden;transform:translateY(16px) scale(.9);
     transition:opacity .35s var(--ease),visibility .35s,transform .35s var(--ease),background .25s}
   .cart-fab.is-visible{opacity:1;visibility:visible;transform:none}
+  /* bounce ao adicionar item */
+  .cart-fab.is-bounce{animation:cartBounce .5s var(--ease)}
+  @keyframes cartBounce{
+    0%{transform:none}
+    30%{transform:translateY(-8px) scale(1.06)}
+    55%{transform:translateY(0) scale(.97)}
+    75%{transform:translateY(-3px) scale(1.01)}
+    100%{transform:none}}
   .cart-fab:hover{background:var(--wine-deep);transform:translateY(-3px)}
   .cart-fab svg{width:20px;height:20px;flex:none}
   .cart-fab__count{background:var(--gold-2);color:var(--olive-deep);
     min-width:22px;height:22px;border-radius:999px;
-    display:grid;place-items:center;font-size:.74rem;font-weight:700;padding:0 .35rem}
+    display:grid;place-items:center;font-size:.74rem;font-weight:700;padding:0 .35rem;
+    transition:transform .25s var(--ease)}
+  .cart-fab__count.is-pulse{animation:countPulse .4s var(--ease)}
+  @keyframes countPulse{0%{transform:scale(1)}45%{transform:scale(1.35)}100%{transform:scale(1)}}
 
   /* overlay escuro atrás do painel */
   .cart-backdrop{position:fixed;inset:0;z-index:70;background:rgba(8,8,8,.55);
@@ -1805,10 +1850,24 @@
       document.body.style.overflow="";
     }
 
+    function bounceFab(){
+      // reinicia a animação mesmo em cliques rápidos
+      fab.classList.remove("is-bounce");
+      countEl.classList.remove("is-pulse");
+      void fab.offsetWidth; // força reflow para reativar a animação
+      fab.classList.add("is-bounce");
+      countEl.classList.add("is-pulse");
+      setTimeout(function(){
+        fab.classList.remove("is-bounce");
+        countEl.classList.remove("is-pulse");
+      }, 550);
+    }
+
     // botões adicionar nos cards
     document.querySelectorAll(".btn--add").forEach(function(btn){
       btn.addEventListener("click", function(){
         add(btn.getAttribute("data-flavor"), parseFloat(btn.getAttribute("data-price")));
+        bounceFab();
         btn.classList.add("is-added");
         var label = btn.querySelector("span");
         var original = label ? label.textContent : null;
@@ -1826,7 +1885,9 @@
       if(!b) return;
       var row = b.closest(".cart-item");
       var name = row.getAttribute("data-name");
-      changeQty(name, b.getAttribute("data-act")==="inc" ? 1 : -1);
+      var inc = b.getAttribute("data-act")==="inc";
+      changeQty(name, inc ? 1 : -1);
+      if(inc) bounceFab();
     });
 
     fab.addEventListener("click", openCart);
