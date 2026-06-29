@@ -104,45 +104,39 @@
   .btn--flavor:hover{background:var(--wine-deep);transform:translateY(-1px)}
   .btn:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
 
-  /* ── LOGO / NOME TIPOGRÁFICO ─────────────────────────────── */
-  .logo{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+  /* ── LOGO — oculto na opção 2 ───────────────────────────── */
+  .logo{display:none}
   .logo__mark{display:none}
-  .logo__txt{display:flex;flex-direction:column;line-height:1}
-  .logo__name{font-family:var(--font-d);font-weight:500;font-size:1.2rem;
-    color:var(--cream);letter-spacing:.08em;text-transform:uppercase}
+  .logo__txt{display:none}
+  .logo__name{display:none}
   .logo__sub{display:none}
 
-  /* ── NAV ─────────────────────────────────────────────────── */
+  /* ── NAV — transparente, só hamburguer ───────────────────── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
-    justify-content:space-between;gap:1rem;padding:.7rem clamp(20px,5vw,80px);
-    background:rgba(30,48,32,.96);backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(201,162,75,.15);
+    justify-content:flex-end;gap:1rem;padding:.9rem clamp(20px,5vw,80px);
+    background:transparent;border:none;
     transform:translateY(0);transition:transform .35s var(--ease)}
-  .nav::after{content:"";position:absolute;bottom:0;left:8%;right:8%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
+  .nav::after{display:none}
   .nav.is-hidden{transform:translateY(-110%)}
-  .nav__links{display:none;gap:2rem;font-size:.88rem}
-  .nav__links a{color:rgba(245,241,232,.75);transition:color .3s;position:relative;letter-spacing:.01em}
-  .nav__links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;
-    background:var(--gold-2);transition:width .3s var(--ease)}
-  .nav__links a:hover{color:var(--cream)}
-  .nav__links a:hover::after{width:100%}
+  .nav__links{display:none}
   .nav .btn--small{display:none}
-  @media(min-width:900px){.nav__links{display:flex}.nav .btn--small{display:inline-flex}}
 
-  /* ── HAMBURGUER ──────────────────────────────────────────── */
-  .nav__burger{display:flex;flex-direction:column;justify-content:center;gap:5px;
-    width:40px;height:40px;background:none;border:none;cursor:pointer;padding:6px;
-    border-radius:8px;transition:background .2s;flex:none}
-  .nav__burger:hover{background:rgba(245,241,232,.08)}
-  .nav__burger span{display:block;height:1.5px;background:rgba(245,241,232,.8);border-radius:2px;
+  /* ── HAMBURGUER — círculo dourado translúcido ────────────── */
+  .nav__burger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+    width:46px;height:46px;
+    background:rgba(201,162,75,.15);border:1px solid rgba(201,162,75,.38);
+    backdrop-filter:blur(10px);
+    border-radius:50%;cursor:pointer;flex:none;
+    transition:background .3s,border-color .3s}
+  .nav__burger:hover{background:rgba(201,162,75,.25);border-color:rgba(201,162,75,.6)}
+  .nav__burger span{display:block;height:1.5px;background:rgba(245,241,232,.9);border-radius:2px;
     transition:transform .3s var(--ease),opacity .2s,width .3s}
-  .nav__burger span:nth-child(1){width:22px}
-  .nav__burger span:nth-child(2){width:14px}
-  .nav__burger span:nth-child(3){width:22px}
-  .nav__burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);width:22px}
+  .nav__burger span:nth-child(1){width:18px}
+  .nav__burger span:nth-child(2){width:12px}
+  .nav__burger span:nth-child(3){width:18px}
+  .nav__burger.is-open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);width:18px}
   .nav__burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
-  .nav__burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);width:22px}
+  .nav__burger.is-open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);width:18px}
   @media(min-width:900px){.nav__burger{display:none}}
 
   /* ── MENU MOBILE ─────────────────────────────────────────── */
